@@ -1,0 +1,60 @@
+title: "Multilingual Experiment"
+#email: your-email@example.com
+description: ""
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+version: "2021-01-01"
+default_language: "en"
+
+timezone: Europe/Rome
+encoding: utf-8
+
+# Build settings
+markdown: kramdown
+
+# Markdown Processors
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 2..3
+
+# Build settings
+plugins:
+  - jekyll-feed
+
+feed:
+  posts_limit: 40
+
+
+
+
+defaults:
+-
+  scope:
+    path: '_posts/en'
+    type: 'posts'
+  values:
+    permalink: 'en/story/:title'
+    language: en
+-
+  scope:
+    path: '_posts/it'
+    type: 'posts'
+  values:
+    permalink: 'it/storia/:title'
+    language: it
+-
+  scope:
+    path: '_pages/en'
+    type: 'pages'
+  values:
+    permalink: 'en/:title'
+    language: en
+-
+  scope:
+    path: '_pages/it'
+    type: 'pages'
+  values:
+    permalink: 'it/:title'
+    language: it

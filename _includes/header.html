@@ -1,0 +1,55 @@
+    <nav>
+      <ul>
+      {%- assign sheets = site.pages | where: 'language', page.language %}
+      {%- for sheet in sheets %}
+        {%- if sheet.title != null and sheet.layout == "page" %}
+          <li>
+            <a href="{{ site.baseurl }}{{ sheet.url }}">{{ sheet.title }}</a>
+          </li>
+        {%- endif %}
+      {%- endfor %}
+      </ul>
+
+      <ul>
+        {%- for language in snippets.languages %}
+
+          {%- if page.layout == 'page' %}
+            {%- assign menu_sheets = site.pages
+              | where: 'language_reference', page.language_reference
+              | where: 'language', language[1].slug %}
+            {%- if menu_sheets.size > 0 %}
+              {%- for menu_sheet in menu_sheets %}
+                {%- assign url = site.baseurl | append: menu_sheet.url %}
+              {%- endfor %}
+            {%- else %}
+            {%- assign menu_sheets = site.pages
+              | where: 'language_reference', 'stories'
+              | where: 'language', language[1].slug %}
+              {%- for menu_sheet in menu_sheets %}
+                {%- assign url = site.baseurl | append: menu_sheet.url %}
+              {%- endfor %}
+            {%- endif %}
+
+          {%- elsif page.layout == 'post' %}
+            {%- assign menu_posts = site.posts
+              | where: 'language_reference', page.language_reference
+              | where: 'language', language[1].slug %}
+            {%- if menu_posts.size > 0 %}
+              {%- for menu_post in menu_posts %}
+                {%- assign url = site.baseurl | append: menu_post.url %}
+              {%- endfor %}
+            {%- else %}
+            {%- assign menu_pages = site.pages
+              | where: 'language_reference', 'stories'
+              | where: 'language', language[1].slug %}
+              {%- for menu_page in menu_pages %}
+                {%- assign url = site.baseurl | append: menu_page.url %}
+              {%- endfor %}
+            {%- endif %}
+          {%- endif %}
+          <li>
+            <a href="{{ url }}">{{ language[1].value }}</a>
+          </li>
+        {%- endfor %}
+      </ul>
+    </nav>

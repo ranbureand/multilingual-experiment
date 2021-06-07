@@ -1,0 +1,7 @@
+languages:
+  en:
+    value: English
+    slug: en
+  tr:
+    value: Italian
+    slug: it
