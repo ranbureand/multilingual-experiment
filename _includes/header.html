@@ -14,38 +14,46 @@
         {%- for language in snippets.languages %}
 
           {%- if page.layout == 'page' %}
-            {%- assign menu_sheets = site.pages
+            {%- assign nav_pages = site.pages
               | where: 'language_reference', page.language_reference
               | where: 'language', language[1].slug %}
-            {%- if menu_sheets.size > 0 %}
-              {%- for menu_sheet in menu_sheets %}
-                {%- assign url = site.baseurl | append: menu_sheet.url %}
+            {%- if nav_pages.size > 0 %}
+              {%- for nav_page in nav_pages %}
+                {%- assign url = site.baseurl | append: nav_page.url %}
               {%- endfor %}
             {%- else %}
-            {%- assign menu_sheets = site.pages
+            {%- assign nav_pages = site.pages
               | where: 'language_reference', 'stories'
               | where: 'language', language[1].slug %}
-              {%- for menu_sheet in menu_sheets %}
-                {%- assign url = site.baseurl | append: menu_sheet.url %}
+              {%- for nav_page in nav_pages %}
+                {%- assign url = site.baseurl | append: nav_page.url %}
               {%- endfor %}
             {%- endif %}
 
           {%- elsif page.layout == 'post' %}
-            {%- assign menu_posts = site.posts
+            {%- assign nav_posts = site.posts
               | where: 'language_reference', page.language_reference
               | where: 'language', language[1].slug %}
-            {%- if menu_posts.size > 0 %}
-              {%- for menu_post in menu_posts %}
-                {%- assign url = site.baseurl | append: menu_post.url %}
+            {%- if nav_posts.size > 0 %}
+              {%- for nav_post in nav_posts %}
+                {%- assign url = site.baseurl | append: nav_post.url %}
               {%- endfor %}
             {%- else %}
-            {%- assign menu_pages = site.pages
+            {%- assign nav_pages = site.pages
               | where: 'language_reference', 'stories'
               | where: 'language', language[1].slug %}
-              {%- for menu_page in menu_pages %}
-                {%- assign url = site.baseurl | append: menu_page.url %}
+              {%- for nav_page in nav_pages %}
+                {%- assign url = site.baseurl | append: nav_page.url %}
               {%- endfor %}
             {%- endif %}
+
+          {%- elsif page.layout == 'index' %}
+            {%- assign nav_pages = site.pages
+              | where: 'language_reference', 'stories'
+              | where: 'language', language[1].slug %}
+            {%- for nav_page in nav_pages %}
+              {%- assign url = site.baseurl | append: nav_page.url %}
+            {%- endfor %}
           {%- endif %}
           <li>
             <a href="{{ url }}">{{ language[1].value }}</a>
