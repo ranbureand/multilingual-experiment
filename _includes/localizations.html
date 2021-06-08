@@ -1,0 +1,24 @@
+{%- if page.layout == 'page' %}
+  {%- assign localized_pages = site.pages
+    | where: 'language_reference', page.language_reference
+    | sort: 'language' %}
+  {%- for localized_page in localized_pages %}
+    <link rel="alternate" hreflang="{{ localized_page.language }}" href="{{ site.baseurl }}{{ localized_page.url }}" />
+  {%- endfor %}
+
+{%- elsif page.layout == 'post' %}
+  {%- assign localized_posts = site.posts
+  | where: 'language_reference', page.language_reference
+  | sort: 'language' %}
+  {%- for localized_post in localized_posts %}
+    <link rel="alternate" hreflang="{{ localized_post.language }}" href="{{ site.baseurl }}{{ localized_post.url }}" />
+  {%- endfor %}
+
+{%- elsif page.layout == 'index' %}
+  {%- assign localized_pages = site.pages
+    | where: 'language_reference', 'stories'
+    | sort: 'language' %}
+  {%- for localized_page in localized_pages %}
+    <link rel="alternate" hreflang="{{ localized_page.language }}" href="{{ site.baseurl }}{{ localized_page.url }}" />
+  {%- endfor %}
+{%- endif %}
