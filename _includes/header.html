@@ -1,5 +1,8 @@
     <nav>
       <ul>
+        <li>
+          <a href="{{ site.baseurl }}/index.html">{{ site.title }}</a>
+        </li>
       {%- assign sheets = site.pages | where: 'language', page.language %}
       {%- for sheet in sheets %}
         {%- if sheet.title != null and sheet.layout == "page" %}
