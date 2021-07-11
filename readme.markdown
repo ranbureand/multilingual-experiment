@@ -1,7 +1,10 @@
-# multilingual-experiment
+# Multilingual Jekyll
+
+##Table of contents
+
+##Directory Structure
 
 ```
-
 .
 ├── _data
 │   └── snippets.yml
@@ -17,16 +20,41 @@
 │   └── post.html
 ├── _posts
 │   ├── en
-│   │   ├── YYYY-MM-DD-hello-world.markdown
+│   │   ├── YYYY-MM-DD-title.markdown
 │   │   ├── …
-│   │   └── YYYY-MM-DD-hello-mars.markdown
+│   │   └── YYYY-MM-DD-title.markdown
 │   └── it
-│   │   ├── YYYY-MM-DD-ciao-mondo.markdown
+│   │   ├── YYYY-MM-DD-titolo.markdown
 │   │   ├── …
-│   │   └── YYYY-MM-DD-ciao-marte.markdown
+│   │   └── YYYY-MM-DD-titolo.markdown
 ├── en
 ├── it
 ├── config.yml
 └── index.html
-
 ```
+
+### Pages
+
+### Posts
+
+## Configuration
+
+## Pages
+
+### Front Matter
+
+## Posts
+
+### Front Matter
+
+## Snippets
+
+## Includes
+
+## Sundries
+
+### Multilingual Sitemap
+
+### RSS Feed
+
+## References
