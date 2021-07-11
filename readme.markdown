@@ -1,8 +1,11 @@
 # Multilingual Jekyll
 
-##Table of contents
+## Table of contents
 
-##Directory Structure
++ [Directory Structure](#directory-structure)
++ [Pages](#pages)
+
+## Directory Structure
 
 ```
 .
