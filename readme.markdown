@@ -7,6 +7,8 @@
 
 ## Directory Structure
 
+The multilingual Jekyll site looks like this:
+
 ```
 .
 ├── _data
@@ -27,13 +29,26 @@
 │   │   ├── …
 │   │   └── YYYY-MM-DD-title.markdown
 │   └── it
-│   │   ├── YYYY-MM-DD-titolo.markdown
-│   │   ├── …
-│   │   └── YYYY-MM-DD-titolo.markdown
-├── en
-├── it
+│       ├── YYYY-MM-DD-titolo.markdown
+│       ├── …
+│       └── YYYY-MM-DD-titolo.markdown
+├── 404.html
 ├── config.yml
-└── index.html
+├── en
+│   ├── drafts.html
+│   ├── feed.xml
+│   ├── postface.html
+│   ├── preface.html
+│   ├── sitemap.xml
+│   └── stories.html
+├── index.html
+├── it
+│   ├── bozze.html
+│   ├── feed.xml
+│   ├── prefazione.html
+│   ├── sitemap.xml
+│   └── storie.html
+└── sitemap.xml
 ```
 
 ### Pages
