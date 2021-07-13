@@ -7,7 +7,7 @@
 
 ## Directory Structure
 
-The multilingual Jekyll site looks like this:
+The directory structure of this example project looks like this:
 
 ```
 .
@@ -75,13 +75,30 @@ In this example project, I created two subfolders, one named `en` for grouping t
 │
 ```
 
-When Jekyll builds the site, you can reach the pages at the following URLs:
-
-```www.site.ext/en/stories.html```
-
-```www.site.ext/it/storie.html```
+When Jekyll builds the site, you can then reach the pages `stories.html` and `storie.html`, for example, at the following URLs: `www.site.ext/en/stories.html` and `www.site.ext/it/storie.html`,  respectively.
 
 ### Posts
+
+You can organize the posts following a similar logic.
+
+In this example project, I created two subfolders in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
+
+```
+│
+├── _posts
+│   ├── en
+│   │   ├── YYYY-MM-DD-title.markdown
+│   │   ├── …
+│   │   └── YYYY-MM-DD-title.markdown
+│   └── it
+│       ├── YYYY-MM-DD-titolo.markdown
+│       ├── …
+│       └── YYYY-MM-DD-titolo.markdown
+│
+```
+
+When Jekyll builds the site, you can then reach the pages `2021-01-01-hello-world.markdown` and `2021-01-01-ciao-mondo.markdown`, for example, at the following URLs: `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`,  respectively.
+
 
 ## Configuration
 
