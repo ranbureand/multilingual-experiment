@@ -58,7 +58,7 @@ You can organize the pages into as many subfolders as the languages that you pla
 In this example project, I created two subfolders, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
 
 ```
-│
+├── …
 ├── en
 │   ├── drafts.html
 │   ├── feed.xml
@@ -66,16 +66,17 @@ In this example project, I created two subfolders, one named `en` for grouping t
 │   ├── preface.html
 │   ├── sitemap.xml
 │   └── stories.html
+├── …
 ├── it
 │   ├── bozze.html
 │   ├── feed.xml
 │   ├── prefazione.html
 │   ├── sitemap.xml
 │   └── storie.html
-│
+├── …
 ```
 
-When Jekyll builds the site, you can then reach the pages `stories.html` and `storie.html`, for example, at the following URLs: `www.site.ext/en/stories.html` and `www.site.ext/it/storie.html`,  respectively.
+When Jekyll builds the site, you can then reach the English page `stories.html` and the Italian page `storie.html`, for example, at the following URLs: `www.site.ext/en/stories.html` and `www.site.ext/it/storie.html`,  respectively.
 
 ### Posts
 
@@ -84,7 +85,7 @@ You can organize the posts following a similar logic.
 In this example project, I created two subfolders in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
 
 ```
-│
+├── …
 ├── _posts
 │   ├── en
 │   │   ├── YYYY-MM-DD-title.markdown
@@ -94,10 +95,10 @@ In this example project, I created two subfolders in the folder named `_posts`, 
 │       ├── YYYY-MM-DD-titolo.markdown
 │       ├── …
 │       └── YYYY-MM-DD-titolo.markdown
-│
+├── …
 ```
 
-When Jekyll builds the site, you can then reach the pages `2021-01-01-hello-world.markdown` and `2021-01-01-ciao-mondo.markdown`, for example, at the following URLs: `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`,  respectively.
+When Jekyll builds the site, you can then reach the English post named `2021-01-01-hello-world.markdown` and the Italian post named `2021-01-01-ciao-mondo.markdown`, for example, at the following URLs: `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`,  respectively.
 
 
 ## Configuration
