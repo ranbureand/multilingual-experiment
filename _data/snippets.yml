@@ -2,6 +2,6 @@ languages:
   en:
     value: English
     slug: en
-  tr:
+  it:
     value: Italian
     slug: it

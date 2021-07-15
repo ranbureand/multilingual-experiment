@@ -26,9 +26,6 @@ plugins:
 feed:
   posts_limit: 40
 
-
-
-
 defaults:
 -
   scope:

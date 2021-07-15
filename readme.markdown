@@ -1,5 +1,7 @@
 # Multilingual Jekyll
 
+[Here](https://ranbureand.github.io/multilingual-experiment/) you can see the site in action.
+
 ## Table of contents
 
 + [Directory Structure](#directory-structure)
@@ -104,6 +106,18 @@ When Jekyll builds the site, you can then reach the English post named `2021-01-
 ## Configuration
 
 ## Pages
+
+``` yaml
+---
+layout: page
+
+title: Postface
+description: Postface.
+
+language: en
+language_reference: postface
+---
+```
 
 ### Front Matter
 
