@@ -153,7 +153,7 @@ language_reference: stories
 
 Both pages have the variable `language_reference` set to `stories` so that they can be easily related.
 
-We can use `language` to retrieve only the pages that share the same language, and `language_reference` to retrieve only the pages that translate the same content in different languages.
+We can use `language` to retrieve only the pages that share the same language, and `language_reference` to retrieve only the pages that return the same content in different languages.
 
 ## Posts
 
