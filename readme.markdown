@@ -107,19 +107,53 @@ When Jekyll builds the site, you can then reach the English post named `2021-01-
 
 ## Pages
 
+Here is how the front matter of a page from this example project looks like:
+
 ``` yaml
 ---
 layout: page
 
-title: Postface
-description: Postface.
+title: Stories
+description: Stories.
 
 language: en
-language_reference: postface
+language_reference: stories
 ---
 ```
 
-### Front Matter
+But for the usual variables, we set two new ones, `language` to define the language of the page, and `language_reference` to relate different translations of the same page.
+
+For example, here is the front matter of the English page *Stories*:
+
+``` yaml
+---
+layout: page
+
+title: Stories
+description: Stories.
+
+language: en
+language_reference: stories
+---
+```
+
+and here is the front matter of its Italian counterpart:
+
+``` yaml
+---
+layout: page
+
+title: Storie
+description: Storie.
+
+language: it
+language_reference: stories
+---
+```
+
+Both pages have the variable `language_reference` set to `stories` and thus we can be easily related.
+
+We can use `language` to retrieve only the pages that share the same language, and `language_reference` to retrieve only the pages that translate the same content in different languages.
 
 ## Posts
 
