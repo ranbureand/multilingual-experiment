@@ -55,9 +55,9 @@ The directory structure of this example project looks like this:
 
 ### Pages
 
-You can organize the pages into as many subfolders as the languages that you plan to support. Name the subfolders using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools").
+We organize the pages into as many subfolders as the languages that we plan to support. We name the subfolders using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools").
 
-In this example project, I created two subfolders, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
+This example project has two subfolders, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
 
 ```
 ├── …
@@ -78,13 +78,13 @@ In this example project, I created two subfolders, one named `en` for grouping t
 ├── …
 ```
 
-When Jekyll builds the site, you can then reach the English page `stories.html` and the Italian page `storie.html`, for example, at the following URLs: `www.site.ext/en/stories.html` and `www.site.ext/it/storie.html`,  respectively.
+After Jekyll has built the site, we can reach, for example, the English page `stories.html` and the Italian page `storie.html` at the following URLs: `www.site.ext/en/stories.html` and `www.site.ext/it/storie.html`, respectively.
 
 ### Posts
 
-You can organize the posts following a similar logic.
+We organize the posts following a similar logic.
 
-In this example project, I created two subfolders in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
+This example project has two subfolders in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
 
 ```
 ├── …
@@ -100,8 +100,7 @@ In this example project, I created two subfolders in the folder named `_posts`, 
 ├── …
 ```
 
-When Jekyll builds the site, you can then reach the English post named `2021-01-01-hello-world.markdown` and the Italian post named `2021-01-01-ciao-mondo.markdown`, for example, at the following URLs: `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`,  respectively.
-
+After Jekyll has built the site, we can reach, for example, the English post named `2021-01-01-hello-world.markdown` and the Italian post named `2021-01-01-ciao-mondo.markdown` at the following URLs: `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`,  respectively.
 
 ## Configuration
 
@@ -156,8 +155,6 @@ Both pages have the variable `language_reference` set to `stories` so that they 
 We can use `language` to retrieve only the pages that share the same language, and `language_reference` to retrieve only the pages that return the same content in different languages.
 
 ## Posts
-
-### Front Matter
 
 ## Snippets
 
