@@ -93,6 +93,10 @@ After Jekyll has built the site, we can reach, for example, the English page `st
 
 ### Exceptions
 
+But, of course, there are exceptions. We place the pages `404.html`, `index.html`, and `sitemap.html` in the root directory of the project. Why?
+
+`404.html` and `index.html` are *unique* pages because Jekyll builds and serves automatically one and only one of them at a time. `sitemap.xml` instead is not other than a [Sitemap index]("https://www.sitemaps.org/protocol.html#index") which points to the other localized sitemaps in the respective language subfolders.
+
 ## Posts
 
 We organize the posts following a similar logic. This example project has two subfolders in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
