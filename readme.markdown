@@ -137,7 +137,7 @@ language_reference: stories
 ---
 ```
 
-But for the usual variables, we set two new ones, `language` to define the language of the page, and `language_reference` to relate different translations of the same page. The logic is based on the principle articulated in Sylvain Durand’s *[Making Jekyll Multilingual]("https://sylvaindurand.org/making-jekyll-multilingual/#principle")*
+But for the usual variables, we set two new ones, `language` to define the language of the page, and `language_reference` to relate different translations of the same page. The logic is based on the principle articulated in Sylvain Durand’s [*Making Jekyll Multilingual*]("https://sylvaindurand.org/making-jekyll-multilingual/#principle").
 
 For example, here is the front matter of the English page *Stories*:
 
