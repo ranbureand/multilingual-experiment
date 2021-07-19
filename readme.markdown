@@ -1,18 +1,19 @@
 # Multilingual Jekyll
 
-[Here](https://ranbureand.github.io/multilingual-experiment/) you can see the site in action.
+[Here](https://ranbureand.github.io/multilingual-experiment/) you can browse the site built using the example project in this repository.
 
 ## Table of Contents
 
 + [Introduction](#introduction)
 + [Directory Structure](#directory-structure)
 + [Pages](#pages)
+  + [Exceptions](#exceptions)
 + [Posts](#posts)
 + [Snippets](#snippets)
 + [Includes](#includes)
 + [Sundries](#sundries)
-+ [Multilingual Sitemap](#multilingual-sitemap)
-+ [RSS Feed](#rss-feed)
+  + [Multilingual Sitemap](#multilingual-sitemap)
+  + [RSS Feed](#rss-feed)
 + [Resources](#resources)
 
 ## Introduction
@@ -65,7 +66,7 @@ The directory structure of this example project looks like this:
 └── sitemap.xml
 ```
 
-### Pages
+## Pages
 
 We organize the pages into as many subfolders as the languages that we plan to support, named using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools"). This example project has two folders, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
 
@@ -90,7 +91,9 @@ We organize the pages into as many subfolders as the languages that we plan to s
 
 After Jekyll has built the site, we can reach, for example, the English page `stories.html` and the Italian page `storie.html` at the URLs `www.site.ext/en/stories.html` and `www.site.ext/it/storie.html`, respectively.
 
-### Posts
+### Exceptions
+
+## Posts
 
 We organize the posts following a similar logic. This example project has two subfolders in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
 
