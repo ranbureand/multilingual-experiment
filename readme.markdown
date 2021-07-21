@@ -11,6 +11,8 @@
 + [Posts](#posts)
 + [Snippets](#snippets)
 + [Includes](#includes)
+  + [header.html](#header-html)
+  + [localizations.html](#localizations-html)
 + [Sundries](#sundries)
   + [Multilingual Sitemap](#multilingual-sitemap)
   + [RSS Feed](#rss-feed)
@@ -18,7 +20,13 @@
 
 ## Introduction
 
-*Coming soon…*
+When I found myself coding a multilingual site in Jekyll, I stumbled on a lot of useful resources while surfing the Web ([see the last section](#resources)) but I struggled not a little while trying to digest and replicate their approaches because of the lack of a concrete, working example to look at.
+
+At first, I tried to replicate their approaches directly in the site I was working on, but this quickly backfired because it proved to be too big of a bite to chew for a designer who codes.
+
+Not giving up, I opted to start from scratch and create a small basic site so that I could just focus on experimenting with multiple languages in Jekyll without any extra complexity in the picture.
+
+This very same repository hosts that small basic site, which I gladly share with the world hoping to be of help for anybody who is into coding a multilingual site using Jekyll.
 
 ## Directory Structure
 
@@ -235,7 +243,7 @@ Again, we can use `language` to retrieve only the posts that have the same langu
 
 We create a YAML [Data File](https://jekyllrb.com/docs/datafiles/ "Data Files") named `snippets.yml` to store the different translations of the user interface copy as additional data in the `_data` subdirectory.
 
-For example, the *Back to the Top* link at the bottom of the page:
+For example, the piece of code that generates *Back to the Top* link at the bottom of the page:
 
 ``` liquid
 <a href="#{{ site.data.snippets.top.[page.language] | slugify: 'latin' }}">{{ site.data.snippets.back.[page.language] }}</a>
@@ -247,7 +255,7 @@ uses the following variable:
 {{ site.data.snippets.back.[page.language] }}
 ```
 
-to retrieve its copy in the current selected language from the following lines in the `snippets.yml` data file:
+to retrieve the name of the link in the current selected language from the following lines in the `snippets.yml` data file:
 
 ``` yaml
 back:
@@ -260,6 +268,12 @@ top:
 ```
 
 ## Includes
+
+### header.html
+
+*Coming soon…*
+
+### localizations.html
 
 *Coming soon…*
 
