@@ -20,7 +20,7 @@
 
 ## Introduction
 
-When I found myself coding a multilingual site in Jekyll, I stumbled on a lot of useful resources while surfing the Web ([see the last section](#resources)) but I struggled not a little while trying to digest and replicate their approaches because of the lack of a concrete, working example to look at.
+When I found myself coding a multilingual site in [Jekyll](https://jekyllrb.com/ "Jekyll"), I stumbled on [a lot of useful resources](#resources) while surfing the Web, but I struggled not a little while trying to digest and replicate their approaches because of the lack of a concrete, working example to look at.
 
 At first, I tried to replicate their approaches directly in the site I was working on, but this quickly backfired because it proved to be too big of a bite to chew for a designer who codes.
 
