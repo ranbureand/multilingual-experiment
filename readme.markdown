@@ -68,7 +68,7 @@ The directory structure of this example project looks like this:
 
 ## Pages
 
-We organize the pages into as many subfolders as the languages that we plan to support, named using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools"). This example project has two folders, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
+We organize the pages into as many subdirectory as the languages that we plan to support, named using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools"). This example project has two subdirectories, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
 
 ```
 ├── …
@@ -99,7 +99,7 @@ But, of course, there are exceptions. We place the pages `404.html`, `index.html
 
 ## Posts
 
-We organize the posts following a similar logic. This example project has two subfolders in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
+We organize the posts following a similar logic. This example project has two subdirectories in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
 
 ```
 ├── …
@@ -174,11 +174,84 @@ We can use `language` to retrieve only the pages that have the same language, an
 
 ## Posts
 
-*Coming soon…*
+Here is how the front matter of a post looks like:
+
+``` yaml
+---
+layout: post
+
+title: Hello World
+description: Hello world.
+date: '2021-01-01 00:00:00'
+
+language: 'en'
+language_reference: 'world'
+
+publish: 'yes'
+---
+```
+
+Again, but for the usual variables, we set two new ones, `language` to define the language of the post, and `language_reference` to relate different translations of the same post.
+
+For example, here is the front matter of the English post Hello World:
+
+``` yaml
+---
+layout: post
+
+title: Hello World
+description: Hello world.
+date: '2021-01-01 00:00:00'
+
+language: 'en'
+language_reference: 'world'
+
+publish: 'yes'
+---
+```
+
+and here is the front matter of its Italian counterpart:
+
+``` yaml
+---
+layout: post
+
+title: Ciao Mondo
+description: Ciao Mondo.
+date: '2021-01-01 00:00:00'
+
+language: 'it'
+language_reference: 'world'
+
+publish: 'yes'
+---
+```
+
+Both posts have the variable `language_reference` set to `world` so that they can be easily related.
+
+Again, we can use `language` to retrieve only the posts that have the same language, and `language_reference` to retrieve only the posts that return the same content translated in different languages.
 
 ## Snippets
 
-*Coming soon…*
+We create a YAML [Data File](https://jekyllrb.com/docs/datafiles/ "Data Files") named `snippets.yml` to store the different translations of the user interface copy as additional data in the `_data` subdirectory.
+
+For example, we create the *Back to the Top* link at the bottom of the page through the following piece of code:
+
+``` liquid
+<a href="#{{ site.data.snippets.top.[page.language] | slugify: 'latin' }}">{{ site.data.snippets.back.[page.language] }}</a>
+```
+
+which retrieves the copy corresponding to the current language from the following lines in the `snippets.yml` data file:
+
+``` yaml
+back:
+  en: Back to the Top
+  it: Torna in Cima
+
+top:
+  en: Top
+  it: Cima
+```
 
 ## Includes
 

@@ -5,3 +5,11 @@ languages:
   it:
     value: Italian
     slug: it
+
+back:
+  en: Back to the Top
+  it: Torna in Cima
+
+top:
+  en: Top
+  it: Cima
