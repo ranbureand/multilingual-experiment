@@ -193,7 +193,7 @@ publish: 'yes'
 
 Again, but for the usual variables, we set two new ones, `language` to define the language of the post, and `language_reference` to relate different translations of the same post.
 
-For example, here is the front matter of the English post Hello World:
+For example, here is the front matter of the English post *Hello World*:
 
 ``` yaml
 ---
@@ -235,13 +235,13 @@ Again, we can use `language` to retrieve only the posts that have the same langu
 
 We create a YAML [Data File](https://jekyllrb.com/docs/datafiles/ "Data Files") named `snippets.yml` to store the different translations of the user interface copy as additional data in the `_data` subdirectory.
 
-For example, we create the *Back to the Top* link at the bottom of the page through the following piece of code:
+For example, the *Back to the Top* link at the bottom of the page:
 
 ``` liquid
 <a href="#{{ site.data.snippets.top.[page.language] | slugify: 'latin' }}">{{ site.data.snippets.back.[page.language] }}</a>
 ```
 
-which retrieves the copy corresponding to the current language from the following lines in the `snippets.yml` data file:
+retrieves the copy in the current selected language from the following lines in the `snippets.yml` data file:
 
 ``` yaml
 back:
@@ -251,6 +251,12 @@ back:
 top:
   en: Top
   it: Cima
+```
+
+thanks to the following variable:
+
+``` liquid
+{{ site.data.snippets.back.[page.language] }}
 ```
 
 ## Includes
