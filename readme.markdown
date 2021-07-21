@@ -241,7 +241,13 @@ For example, the *Back to the Top* link at the bottom of the page:
 <a href="#{{ site.data.snippets.top.[page.language] | slugify: 'latin' }}">{{ site.data.snippets.back.[page.language] }}</a>
 ```
 
-retrieves the copy in the current selected language from the following lines in the `snippets.yml` data file:
+uses the following variable:
+
+``` liquid
+{{ site.data.snippets.back.[page.language] }}
+```
+
+to retrieve its copy in the current selected language from the following lines in the `snippets.yml` data file:
 
 ``` yaml
 back:
@@ -251,12 +257,6 @@ back:
 top:
   en: Top
   it: Cima
-```
-
-thanks to the following variable:
-
-``` liquid
-{{ site.data.snippets.back.[page.language] }}
 ```
 
 ## Includes
