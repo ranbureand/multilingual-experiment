@@ -1,5 +1,7 @@
 # Multilingual Experiment in Jekyll
 
+This README and repository illustrate my approach to create a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*. [Here](https://ranbureand.github.io/multilingual-experiment/) you can browse a small basic *GitHub Pages* site built following this approach.
+
 ## Table of Contents
 
 + [Preface](#preface)
@@ -19,7 +21,7 @@
 
 ## Preface
 
-When I found myself coding a multilingual site in [Jekyll](https://jekyllrb.com/ "Jekyll"), I stumbled on [a lot of useful resources](#resources) while surfing the Web, but I struggled not a little while trying to digest and replicate their approaches because of the lack of a concrete, working example to look at.
+When I found myself coding a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*, I stumbled on [a lot of useful resources](#resources) while surfing the Web, but I struggled not a little while trying to digest and replicate their approaches because of the lack of a concrete, working example to look at.
 
 At first, I tried to replicate their approaches directly in the site I was working on, but this quickly backfired because it proved to be too big of a bite to chew for a designer who codes.
 
@@ -32,10 +34,10 @@ This very same repository hosts that small basic site, which I gladly share with
 A few directions before starting:
 
 + the small basic site supports only two languages, English and Italian
-+ 
++
 +
 
-[Here](https://ranbureand.github.io/multilingual-experiment/) you can browse the site built using the example project in this repository.
+ you can browse the site built using the example project in this repository.
 
 ## Directory Structure
 
