@@ -1,0 +1,15 @@
+      {%- for language in snippets.languages %}
+        {%- if page.language == site.default_language %}
+          {%- assign url = site.baseurl | append: '/'%}
+        {%- else %}
+          {%- assign nav_pages = site.pages
+            | where: 'language_reference', 'stories'
+            | where: 'language', page.language %}
+          {%- for nav_page in nav_pages %}
+            {%- assign url = site.baseurl | append: nav_page.url %}
+          {%- endfor %}
+        {%- endif %}
+      {%- endfor %}
+      <h1 class="site-title">
+        <a href="{{ url }}" {%- if page.url == '/' %} class="current"{%- endif %}>{{ site.title }}</a>
+      </h1>

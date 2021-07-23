@@ -1,0 +1,51 @@
+        <ul class="navigation-language-switch">
+          {%- for language in snippets.languages %}
+
+            {%- if page.layout == 'page' %}
+              {%- assign nav_pages = site.pages
+                | where: 'language_reference', page.language_reference
+                | where: 'language', language[1].slug %}
+              {%- if nav_pages.size > 0 %}
+                {%- for nav_page in nav_pages %}
+                  {%- assign url = site.baseurl | append: nav_page.url %}
+                {%- endfor %}
+              {%- else %}
+                {%- assign nav_pages = site.pages
+                  | where: 'language_reference', 'stories'
+                  | where: 'language', language[1].slug %}
+                {%- for nav_page in nav_pages %}
+                  {%- assign url = site.baseurl | append: nav_page.url %}
+                {%- endfor %}
+              {%- endif %}
+
+            {%- elsif page.layout == 'post' %}
+              {%- assign nav_posts = site.posts
+                | where: 'language_reference', page.language_reference
+                | where: 'language', language[1].slug %}
+              {%- if nav_posts.size > 0 %}
+                {%- for nav_post in nav_posts %}
+                  {%- assign url = site.baseurl | append: nav_post.url %}
+                {%- endfor %}
+              {%- else %}
+                {%- assign nav_pages = site.pages
+                  | where: 'language_reference', 'stories'
+                  | where: 'language', language[1].slug %}
+                {%- for nav_page in nav_pages %}
+                  {%- assign url = site.baseurl | append: nav_page.url %}
+                {%- endfor %}
+              {%- endif %}
+
+            {%- else %}
+              {%- assign nav_pages = site.pages
+                | where: 'language_reference', 'stories'
+                | where: 'language', language[1].slug %}
+              {%- for nav_page in nav_pages %}
+                {%- assign url = site.baseurl | append: nav_page.url %}
+              {%- endfor %}
+
+            {%- endif %}
+            <li>
+              <a href="{{ url }}" {%- if language[1].slug == page.language %} class="current"{%- endif %}>{{ language[1].value }}</a>
+            </li>
+          {%- endfor %}
+        </ul>
