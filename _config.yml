@@ -1,8 +1,10 @@
+# Site settings
 title: "Multilingual Experiment"
-#email: your-email@example.com
-description: ""
+description: "A site to experiment with the Jekyll multilingual "
+
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
 version: "2021-01-01"
 default_language: "en"
 
@@ -19,13 +21,7 @@ kramdown:
   entity_output: as_char
   toc_levels: 2..3
 
-# Build settings
-plugins:
-  - jekyll-feed
-
-feed:
-  posts_limit: 40
-
+# Defaults
 defaults:
 -
   scope:
@@ -40,18 +36,4 @@ defaults:
     type: 'posts'
   values:
     permalink: 'it/storia/:title'
-    language: it
--
-  scope:
-    path: '_pages/en'
-    type: 'pages'
-  values:
-    permalink: 'en/:title'
-    language: en
--
-  scope:
-    path: '_pages/it'
-    type: 'pages'
-  values:
-    permalink: 'it/:title'
     language: it

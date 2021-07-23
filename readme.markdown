@@ -1,9 +1,8 @@
-# Multilingual Jekyll
-
-[Here](https://ranbureand.github.io/multilingual-experiment/) you can browse the site built using the example project in this repository.
+# Multilingual Experiment in Jekyll
 
 ## Table of Contents
 
++ [Preface](#preface)
 + [Introduction](#introduction)
 + [Directory Structure](#directory-structure)
 + [Pages](#pages)
@@ -18,15 +17,25 @@
   + [RSS Feed](#rss-feed)
 + [Resources](#resources)
 
-## Introduction
+## Preface
 
 When I found myself coding a multilingual site in [Jekyll](https://jekyllrb.com/ "Jekyll"), I stumbled on [a lot of useful resources](#resources) while surfing the Web, but I struggled not a little while trying to digest and replicate their approaches because of the lack of a concrete, working example to look at.
 
 At first, I tried to replicate their approaches directly in the site I was working on, but this quickly backfired because it proved to be too big of a bite to chew for a designer who codes.
 
-Not giving up, I opted to start from scratch and create a small basic site so that I could just focus on experimenting with multiple languages in Jekyll without any extra complexity in the picture.
+Not giving up, I then opted for creating a small basic site from scratch, so that I could just focus on experimenting with multiple languages in Jekyll without any extra complexity in the picture.
 
-This very same repository hosts that small basic site, which I gladly share with the world hoping to be of help for anybody who is into coding a multilingual site using Jekyll.
+This very same repository hosts that small basic site, which I gladly share with the world as an example project hoping to be of help for anybody who is into coding a multilingual site using Jekyll.
+
+## Introduction
+
+A few directions before starting:
+
++ the small basic site supports only two languages, English and Italian
++ 
++
+
+[Here](https://ranbureand.github.io/multilingual-experiment/) you can browse the site built using the example project in this repository.
 
 ## Directory Structure
 
@@ -246,13 +255,13 @@ We create a YAML [Data File](https://jekyllrb.com/docs/datafiles/ "Data Files") 
 For example, the piece of code that generates *Back to the Top* link at the bottom of the page:
 
 ``` liquid
-<a href="#{{ site.data.snippets.top.[page.language] | slugify: 'latin' }}">{{ site.data.snippets.back.[page.language] }}</a>
+<a href="#{{ site.data.snippets.top[page.language] | slugify: 'latin' }}">{{ site.data.snippets.back[page.language] }}</a>
 ```
 
 uses the following variable:
 
 ``` liquid
-{{ site.data.snippets.back.[page.language] }}
+{{ site.data.snippets.back[page.language] }}
 ```
 
 to retrieve the name of the link in the current selected language from the following lines in the `snippets.yml` data file:
@@ -269,7 +278,17 @@ top:
 
 ## Includes
 
+*Coming soon…*
+
 ### header.html
+
+*Coming soon…*
+
+#### Navigation
+
+*Coming soon…*
+
+#### Language Switch
 
 *Coming soon…*
 
@@ -291,4 +310,5 @@ top:
 
 ## Resources
 
-*Coming soon…*
++ [Making Jekyll multilingual](https://sylvaindurand.org/making-jekyll-multilingual/ "Making Jekyll multilingual")
++ [Making a multilingual website with Jekyll collections](https://www.kooslooijesteijn.net/blog/multilingual-website-with-jekyll-collections "Making a multilingual website with Jekyll collections")

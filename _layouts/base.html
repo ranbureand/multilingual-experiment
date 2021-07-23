@@ -6,17 +6,19 @@
 
 {% include head.html %}
 
-  <body id="{{ site.data.snippets.top.[page.language] | slugify: 'latin' }}">
+  <body id="{{ site.data.snippets.top[page.language] | slugify: 'latin' }}">
 
 {% include header.html %}
 
     <div class="container">
 
-{{ content }}
-
-{% include footer.html %}
+      <div class="content">
+        {{ content }}
+      </div>
 
     </div>
+
+{% include footer.html %}
 
   </body>
 
