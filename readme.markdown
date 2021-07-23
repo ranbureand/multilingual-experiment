@@ -1,6 +1,6 @@
 # Multilingual Experiment in Jekyll
 
-This repository and related README illustrate my approach to create a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*. [Here](https://ranbureand.github.io/multilingual-experiment/) you can browse a small basic *GitHub Pages* site built following this approach.
+This repository and related README illustrate my approach to create a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*. [Here you can browse](https://ranbureand.github.io/multilingual-experiment/) a small basic *GitHub Pages* site built following this approach.
 
 ## Table of Contents
 
