@@ -1,6 +1,6 @@
 # Multilingual Experiment in Jekyll
 
-The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experiment/) hosted in this repository, and its related README, illustrate my approach to create a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*.
+The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experiment/) hosted in this repository and this README illustrate my approach to create a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*.
 
 ## Table of Contents
 
@@ -117,7 +117,7 @@ After Jekyll has built the site, we can reach, for example, the English page `st
 
 But, of course, there are exceptions. We place the pages `404.html`, `index.html`, and `sitemap.html` in the root directory of the site. Why?
 
-`404.html` and `index.html` are *unique* pages because Jekyll builds and serves automatically one and only one of them at a time. `sitemap.xml` instead is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders.
+`404.html` and `index.html` are *unique* pages because Jekyll builds and serves automatically one and only one of them at a time. `sitemap.xml` instead is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders (read the section [Multilingual Sitemap](#multilingual-sitemap) for more details).
 
 ### Posts
 
