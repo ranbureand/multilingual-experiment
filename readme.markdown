@@ -1,6 +1,6 @@
 # Multilingual Experiment in Jekyll
 
-This repository and related README illustrate my approach to create a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*. [Here you can browse](https://ranbureand.github.io/multilingual-experiment/) a small basic *GitHub Pages* site built following this approach.
+The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experiment/) hosted in this repository, and its related README, illustrate my approach to create a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*.
 
 ## Table of Contents
 
@@ -25,9 +25,9 @@ When I found myself coding a multilingual site in *[Jekyll](https://jekyllrb.com
 
 At first, I tried to replicate their approaches directly in the site I was working on, but this quickly backfired because it proved to be too big of a bite to chew for a designer who codes.
 
-Not giving up, I then opted for creating a small basic site from scratch, so that I could just focus on experimenting with multiple languages in Jekyll without any extra complexity in the picture.
+Not giving up, I then opted for creating a basic site from scratch, so that I could just focus on experimenting with multiple languages in Jekyll without any extra complexity in the picture.
 
-This very same repository hosts that small basic site, which I gladly share with the world as an example project hoping to be of help for anybody who is into coding a multilingual site using Jekyll.
+That very same basic site is hosted in this repository, which I gladly share with the world as an example project, hoping to help anybody who is into coding a multilingual site using Jekyll.
 
 ## Introduction
 
@@ -37,11 +37,9 @@ A few directions before starting:
 +
 +
 
- you can browse the site built using the example project in this repository.
-
 ## Directory Structure
 
-The directory structure of this example project looks like this:
+The directory structure of this basic site looks like this:
 
 ```
 .
@@ -87,7 +85,7 @@ The directory structure of this example project looks like this:
 
 ## Pages
 
-We organize the pages into as many subdirectory as the languages that we plan to support, named using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools"). This example project has two subdirectories, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
+We organize the pages into as many subdirectory as the languages that we plan to support, named using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools"). This basic site has two subdirectories, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
 
 ```
 ├── …
@@ -112,13 +110,13 @@ After Jekyll has built the site, we can reach, for example, the English page `st
 
 ### Exceptions
 
-But, of course, there are exceptions. We place the pages `404.html`, `index.html`, and `sitemap.html` in the root directory of the project. Why?
+But, of course, there are exceptions. We place the pages `404.html`, `index.html`, and `sitemap.html` in the root directory of the site. Why?
 
 `404.html` and `index.html` are *unique* pages because Jekyll builds and serves automatically one and only one of them at a time. `sitemap.xml` instead is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders.
 
 ## Posts
 
-We organize the posts following a similar logic. This example project has two subdirectories in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
+We organize the posts following a similar logic. This basic site has two subdirectories in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
 
 ```
 ├── …
@@ -254,16 +252,24 @@ Again, we can use `language` to retrieve only the posts that have the same langu
 
 We create a YAML [Data File](https://jekyllrb.com/docs/datafiles/ "Data Files") named `snippets.yml` to store the different translations of the user interface copy as additional data in the `_data` subdirectory.
 
+We then create a new variable named `snippets` in the `base.html` layout to shorten the code that we need to write to access the data contained in the `snippets.yml` file:
+
+``` liquid
+{%- assign snippets = site.data.snippets %}
+```
+
+Through this variable, we can spare ourselves from writing `site.data.snippets.top[current_language]` and instead use the shorter form `snippets.top[current_language]`.
+
 For example, the piece of code that generates *Back to the Top* link at the bottom of the page:
 
 ``` liquid
-<a href="#{{ site.data.snippets.top[page.language] | slugify: 'latin' }}">{{ site.data.snippets.back[page.language] }}</a>
+<a href="#{{ snippets.top[page.language] | slugify: 'latin' }}">{{ snippets.back[page.language] }}</a>
 ```
 
 uses the following variable:
 
 ``` liquid
-{{ site.data.snippets.back[page.language] }}
+{{ snippets.back[page.language] }}
 ```
 
 to retrieve the name of the link in the current selected language from the following lines in the `snippets.yml` data file:
