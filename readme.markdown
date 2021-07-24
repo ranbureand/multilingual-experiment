@@ -275,7 +275,7 @@ Again, we can use `language` to retrieve only the posts that have the same langu
 
 We create a YAML [Data File](https://jekyllrb.com/docs/datafiles/ "Data Files") named `snippets.yml` to store the different translations of the user interface copy as additional data in the `_data` subdirectory.
 
-We then create a new variable named `snippets` in the `base.html` layout (the `page.html` layout extends the `base.html` layout) to shorten the code that we need to write to access the data contained in the `snippets.yml` file:
+We then create a new variable named `snippets` in the `base.html` layout (since the `base.html` layout works as the base for all the other layouts) to shorten the code that we need to write to access the data contained in the `snippets.yml` file:
 
 ``` liquid
 {%- assign snippets = site.data.snippets %}
