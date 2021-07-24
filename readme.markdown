@@ -258,7 +258,7 @@ We then create a new variable named `snippets` in the `base.html` layout to shor
 {%- assign snippets = site.data.snippets %}
 ```
 
-Through this variable, we can spare ourselves from writing `site.data.snippets.top[current_language]` and instead use the shorter form `snippets.top[current_language]`.
+Through this variable, we can write just `snippets.name_of_the_data_item` when accessing a data item rather than the full, longer `site.data.snippets.name_of_the_data_item`.
 
 For example, the piece of code that generates *Back to the Top* link at the bottom of the page:
 
