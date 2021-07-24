@@ -7,10 +7,12 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
 + [Preface](#preface)
 + [Introduction](#introduction)
 + [Directory Structure](#directory-structure)
-+ [Configuration](#configuration)
-+ [Pages](#pages)
-  + [Exceptions](#exceptions)
-+ [Posts](#posts)
+  + [Pages](#pages)
+    + [Exceptions](#exceptions)
+  + [Posts](#posts)
+    + [Configuration](#configuration)
++ [Pages](#pages-1)
++ [Posts](#posts-1)
 + [Snippets](#snippets)
 + [Includes](#includes)
   + [header.html](#header-html)
@@ -37,6 +39,8 @@ A few directions before starting:
 + the small basic site supports only two languages, English and Italian
 +
 +
+
+*Coming soon…*
 
 ## Directory Structure
 
@@ -135,7 +139,7 @@ We organize the posts following a similar logic. This basic site has two subdire
 
 #### Configuration
 
-We then add the following configuration options in the _config.yml file placed in the site’s root directory:
+We then add the following configuration options in the `_config.yml` file placed in the site’s root directory:
 
 ``` yaml
 defaults:
@@ -155,7 +159,7 @@ defaults:
     language: it
 ```
 
-By setting global permalinks for posts, we can reach, for example, the English post named `2021-01-01-hello-world.markdown` and the Italian post named `2021-01-01-ciao-mondo.markdown` at the URLs `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`.
+By setting global permalinks for posts, we can reach, for example, the English post named `2021-01-01-hello-world.markdown` and the Italian post named `2021-01-01-ciao-mondo.markdown` at the URLs `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`, respectively.
 
 ## Pages
 
