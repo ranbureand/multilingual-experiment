@@ -1,6 +1,6 @@
 # Site settings
 title: "Multilingual Experiment"
-description: "A site to experiment with the Jekyll multilingual "
+description: "A basic site to experiment with Jekyll and multilingual sites."
 
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com

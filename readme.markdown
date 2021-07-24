@@ -7,6 +7,7 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
 + [Preface](#preface)
 + [Introduction](#introduction)
 + [Directory Structure](#directory-structure)
++ [Configuration](#configuration)
 + [Pages](#pages)
   + [Exceptions](#exceptions)
 + [Posts](#posts)
@@ -83,7 +84,7 @@ The directory structure of this basic site looks like this:
 └── sitemap.xml
 ```
 
-## Pages
+### Pages
 
 We organize the pages into as many subdirectory as the languages that we plan to support, named using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools"). This basic site has two subdirectories, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
 
@@ -108,13 +109,13 @@ We organize the pages into as many subdirectory as the languages that we plan to
 
 After Jekyll has built the site, we can reach, for example, the English page `stories.html` and the Italian page `storie.html` at the URLs `www.site.ext/en/stories.html` and `www.site.ext/it/storie.html`, respectively.
 
-### Exceptions
+#### Exceptions
 
 But, of course, there are exceptions. We place the pages `404.html`, `index.html`, and `sitemap.html` in the root directory of the site. Why?
 
 `404.html` and `index.html` are *unique* pages because Jekyll builds and serves automatically one and only one of them at a time. `sitemap.xml` instead is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders.
 
-## Posts
+### Posts
 
 We organize the posts following a similar logic. This basic site has two subdirectories in the folder named `_posts`, one named `en` for grouping the English posts, and one named `it` for grouping the Italian posts.
 
@@ -132,11 +133,29 @@ We organize the posts following a similar logic. This basic site has two subdire
 ├── …
 ```
 
-After Jekyll has built the site, we can reach, for example, the English post named `2021-01-01-hello-world.markdown` and the Italian post named `2021-01-01-ciao-mondo.markdown` at the URLs `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`, respectively.
+#### Configuration
 
-## Configuration
+We then add the following configuration options in the _config.yml file placed in the site’s root directory:
 
-*Coming soon…*
+``` yaml
+defaults:
+-
+  scope:
+    path: '_posts/en'
+    type: 'posts'
+  values:
+    permalink: 'en/story/:title'
+    language: en
+-
+  scope:
+    path: '_posts/it'
+    type: 'posts'
+  values:
+    permalink: 'it/storia/:title'
+    language: it
+```
+
+By setting global permalinks for posts, we can reach, for example, the English post named `2021-01-01-hello-world.markdown` and the Italian post named `2021-01-01-ciao-mondo.markdown` at the URLs `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`.
 
 ## Pages
 
