@@ -313,13 +313,32 @@ top:
 
 ### header.html
 
+The include `header.html` generates the `<header/>` tag in the HTML page. It, in turn, has three more includes:
+
++ `site-title.html`
++ `navigation.html`
++ `language-switch.html`
+
+``` liquid
+<header>
+  {% include site-title.html %}
+  <nav>
+    {% include navigation.html %}
+
+    {% include language-switch.html %}
+  </nav>
+</header>
+```
+
+#### navigation.html
+
 *Coming soon…*
 
-#### Navigation
+#### language-switch.html
 
 *Coming soon…*
 
-#### Language Switch
+#### site-title.html
 
 *Coming soon…*
 
@@ -336,6 +355,10 @@ top:
 *Coming soon…*
 
 ### RSS Feed
+
+*Coming soon…*
+
+### 404 Page Not Found
 
 *Coming soon…*
 
