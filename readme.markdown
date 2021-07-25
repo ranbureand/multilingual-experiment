@@ -338,7 +338,7 @@ The include `header.html` generates the header in the HTML page. It, in turn, ha
 
 #### navigation.html
 
-The include `header.html` generates a unordered list containing all the published pages having the same `language` variable as the current page:
+The include `navigation.html` generates a unordered list containing all the published pages having the same `language` variable as the current page.
 
 ``` liquid
 <ul>
@@ -355,7 +355,7 @@ The include `header.html` generates a unordered list containing all the publishe
 </ul>
 ```
 
-In the piece of code above, we create a new variable named `navigation_pages` which returns a list of the pages that, in their front matter, have:
+In the piece of code above, we create a new variable named `navigation_pages` which returns a list of the pages that, [in their front matter](#pages-1), have:
 
 + the `layout` variable set to `page`
 + the `language` variable set to the language of the current page (`page.language`)
