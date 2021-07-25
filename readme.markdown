@@ -375,7 +375,7 @@ Whenever the title of the current page in the array (`navigation_page.title`) ma
 
 #### language-switch.html
 
-The include `language-switch.html` generates an unordered list containing all the languages supported in the site.
+The include `language-switch.html` generates an unordered list containing all the languages supported in the site. You can use the list to switch to one of the other language translations of the current page/post, if available.
 
 ``` liquid
 <ul>
@@ -514,7 +514,7 @@ If we set the front matter of the pages correctly, the size of the array `naviga
   {%- endfor %}
 ```
 
-If the size of the array `navigation_pages` is equal to one, we loop through the array `navigation_pages` and create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and the url of the one page (`nav_page.url`)
+If the size of the array `navigation_pages` is equal to one, we loop through the array `navigation_pages` and create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and the url of the one page (`nav_page.url`).
 
 *To be continued soon…*
 
