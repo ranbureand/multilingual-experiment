@@ -458,7 +458,28 @@ The for loop contains three different code blocks that are executed only if spec
 </ul>
 ```
 
-We execute the first block of code only if the `layout` variable of the page is set to `page`, else, if it is set to `post`, we execute the second block of code, else, if it is set to anything else, we execute the third block of code.
+We execute the first block of code only if the `layout` variable of the current page is set to `page`, else, if it is set to `post`, we execute the second block of code, else, if it is set to anything else (or to nothing at all), we execute the third block of code.
+
+##### if page.layout == 'page'
+
+``` liquid
+{%- if page.layout == 'page' %}
+  {%- assign navigation_pages = site.pages
+    | where: 'language_reference', page.language_reference
+    | where: 'language', language[1].slug %}
+  {%- if navigation_pages.size > 0 %}
+    {%- for nav_page in navigation_pages %}
+      {%- assign url = site.baseurl | append: nav_page.url %}
+    {%- endfor %}
+  {%- else %}
+    {%- assign navigation_pages = site.pages
+      | where: 'language_reference', 'stories'
+      | where: 'language', language[1].slug %}
+    {%- for nav_page in navigation_pages %}
+      {%- assign url = site.baseurl | append: nav_page.url %}
+    {%- endfor %}
+  {%- endif %}
+```
 
 #### site-title.html
 
