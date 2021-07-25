@@ -385,7 +385,7 @@ The include `language-switch.html` generates an unordered list containing all th
       {%- assign navigation_pages = site.pages
         | where: 'language_reference', page.language_reference
         | where: 'language', language[1].slug %}
-      {%- if navigation_pages.size > 0 %}
+      {%- if navigation_pages.size == 1 %}
         {%- for nav_page in navigation_pages %}
           {%- assign url = site.baseurl | append: nav_page.url %}
         {%- endfor %}
@@ -402,7 +402,7 @@ The include `language-switch.html` generates an unordered list containing all th
       {%- assign nav_posts = site.posts
         | where: 'language_reference', page.language_reference
         | where: 'language', language[1].slug %}
-      {%- if nav_posts.size > 0 %}
+      {%- if nav_posts.size == 1 %}
         {%- for nav_post in nav_posts %}
           {%- assign url = site.baseurl | append: nav_post.url %}
         {%- endfor %}
@@ -431,7 +431,7 @@ The include `language-switch.html` generates an unordered list containing all th
 </ul>
 ```
 
-In the code above, we loop through the languages defined in the `snippets.html` file.
+In the code above, we loop through the languages defined in the `snippets.html` file (read the section [Snippets](#snippets) for more details).
 
 ``` yaml
 languages:
@@ -475,7 +475,7 @@ We execute the first block of code only if the `layout` variable of the current 
   {%- assign navigation_pages = site.pages
     | where: 'language_reference', page.language_reference
     | where: 'language', language[1].slug %}
-  {%- if navigation_pages.size > 0 %}
+  {%- if navigation_pages.size == 1 %}
     {%- for nav_page in navigation_pages %}
       {%- assign url = site.baseurl | append: nav_page.url %}
     {%- endfor %}
@@ -500,7 +500,7 @@ What does the first block of code do?
 We create a new variable named `navigation_pages` which returns a list of the pages that, [in their front matter](#pages-1), have:
 
 + the `language_reference` variable equal to the current page’s `language_reference` variable (`page.language_reference`)
-+ the `language` variable equal to the slug of the current language item in the array `snippets.languages`
++ the `language` variable equal to the slug of the current language item (`language[1].slug`) in the array `snippets.languages`
 
 If we set the front matter of the pages correctly, the size of the array `navigation_pages` should be:
 
@@ -508,13 +508,26 @@ If we set the front matter of the pages correctly, the size of the array `naviga
 + equal to zero if the current page <u>does not have</u> a corresponding page in the current language item in the array `snippets.languages`
 
 ``` liquid
-{%- if navigation_pages.size > 0 %}
+{%- if navigation_pages.size == 1 %}
   {%- for nav_page in navigation_pages %}
     {%- assign url = site.baseurl | append: nav_page.url %}
   {%- endfor %}
 ```
 
 If the size of the array `navigation_pages` is equal to one, we loop through the array `navigation_pages` and create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and the url of the one page (`nav_page.url`) contained in the array.
+
+``` liquid
+{%- else %}
+  {%- assign navigation_pages = site.pages
+    | where: 'language_reference', 'stories'
+    | where: 'language', language[1].slug %}
+  {%- for nav_page in navigation_pages %}
+    {%- assign url = site.baseurl | append: nav_page.url %}
+  {%- endfor %}
+{%- endif %}
+```
+
+On the other hand, if the size of the array `navigation_pages` is equal to zero, 
 
 *To be continued soon…*
 
@@ -525,7 +538,7 @@ If the size of the array `navigation_pages` is equal to one, we loop through the
   {%- assign nav_posts = site.posts
     | where: 'language_reference', page.language_reference
     | where: 'language', language[1].slug %}
-  {%- if nav_posts.size > 0 %}
+  {%- if nav_posts.size == 1 %}
     {%- for nav_post in nav_posts %}
       {%- assign url = site.baseurl | append: nav_post.url %}
     {%- endfor %}

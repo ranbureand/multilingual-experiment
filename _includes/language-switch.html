@@ -5,7 +5,7 @@
               {%- assign navigation_pages = site.pages
                 | where: 'language_reference', page.language_reference
                 | where: 'language', language[1].slug %}
-              {%- if navigation_pages.size > 0 %}
+              {%- if navigation_pages.size == 1 %}
                 {%- for nav_page in navigation_pages %}
                   {%- assign url = site.baseurl | append: nav_page.url %}
                 {%- endfor %}
@@ -22,7 +22,7 @@
               {%- assign nav_posts = site.posts
                 | where: 'language_reference', page.language_reference
                 | where: 'language', language[1].slug %}
-              {%- if nav_posts.size > 0 %}
+              {%- if nav_posts.size == 1 %}
                 {%- for nav_post in nav_posts %}
                   {%- assign url = site.baseurl | append: nav_post.url %}
                 {%- endfor %}
