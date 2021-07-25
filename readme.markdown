@@ -356,8 +356,8 @@ The include `navigation.html` generates an unordered list containing all the pub
     | where: 'published', true
     | sort: 'order' %}
   {%- for navigation_page in navigation_pages %}
-  <li>
-    <a href="{{ site.baseurl }}{{ navigation_page.url }}" {%- if navigation_page.title == page.title %} class="current"{%- endif %}>{{ navigation_page.title }}</a>
+  <li{%- if navigation_page.title == page.title %} class="current"{%- endif %}>
+    <a href="{{ site.baseurl }}{{ navigation_page.url }}">{{ navigation_page.title }}</a>
   </li>
   {%- endfor %}
 </ul>
@@ -371,7 +371,7 @@ In the code above, we create a new variable named `navigation_pages` which retur
 
 and we order the list according to the `order` variable. We then loop trough the array of pages and generate the list items of the unordered list.
 
-Whenever the title of the current page in the array (`navigation_page.title`) matches the title of the current page (`page.title`), we add a class named `current` to the corresponding `<a/>` tag.
+Whenever the title of the current page in the array (`navigation_page.title`) matches the title of the current page (`page.title`), we add a class named `current` to the corresponding `<li/>` tag.
 
 #### language-switch.html
 
@@ -424,8 +424,8 @@ The include `language-switch.html` generates an unordered list containing all th
       {%- endfor %}
 
     {%- endif %}
-    <li>
-      <a href="{{ url }}" {%- if language[1].slug == page.language %} class="current"{%- endif %}>{{ language[1].value }}</a>
+    <li{%- if language[1].slug == page.language %} class="current"{%- endif %}>
+      <a href="{{ url }}">{{ language[1].value }}</a>
     </li>
   {%- endfor %}
 </ul>
@@ -487,6 +487,63 @@ We execute the first block of code only if the `layout` variable of the current 
       {%- assign url = site.baseurl | append: nav_page.url %}
     {%- endfor %}
   {%- endif %}
+```
+
+What does the first block of code do?
+
+``` liquid
+{%- assign navigation_pages = site.pages
+  | where: 'language_reference', page.language_reference
+  | where: 'language', language[1].slug %}
+```
+
+We create a new variable named `navigation_pages` which returns a list of the pages that, [in their front matter](#pages-1), have:
+
++ the `language_reference` variable equal to the current page’s language_reference variable (`page.language_reference`)
++ the `language` variable equal to the slug of the current language in the array `snippets.languages`
+
+``` liquid
+{%- if navigation_pages.size > 0 %}
+  {%- for nav_page in navigation_pages %}
+    {%- assign url = site.baseurl | append: nav_page.url %}
+  {%- endfor %}
+```
+
+If the size of the array `navigation_pages` is bigger than 0—it should be at most one—we loop through
+
+*To be continued soon…*
+
+##### elsif page.layout == 'post'
+
+``` liquid
+{%- elsif page.layout == 'post' %}
+  {%- assign nav_posts = site.posts
+    | where: 'language_reference', page.language_reference
+    | where: 'language', language[1].slug %}
+  {%- if nav_posts.size > 0 %}
+    {%- for nav_post in nav_posts %}
+      {%- assign url = site.baseurl | append: nav_post.url %}
+    {%- endfor %}
+  {%- else %}
+    {%- assign navigation_pages = site.pages
+      | where: 'language_reference', 'stories'
+      | where: 'language', language[1].slug %}
+    {%- for nav_page in navigation_pages %}
+      {%- assign url = site.baseurl | append: nav_page.url %}
+    {%- endfor %}
+  {%- endif %}
+```
+
+##### else
+
+``` liquid
+{%- else %}
+  {%- assign navigation_pages = site.pages
+    | where: 'language_reference', 'stories'
+    | where: 'language', language[1].slug %}
+  {%- for nav_page in navigation_pages %}
+    {%- assign url = site.baseurl | append: nav_page.url %}
+  {%- endfor %}
 ```
 
 #### site-title.html

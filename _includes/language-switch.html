@@ -44,8 +44,8 @@
               {%- endfor %}
 
             {%- endif %}
-            <li>
-              <a href="{{ url }}" {%- if language[1].slug == page.language %} class="current"{%- endif %}>{{ language[1].value }}</a>
+            <li{%- if language[1].slug == page.language %} class="current"{%- endif %}>
+              <a href="{{ url }}">{{ language[1].value }}</a>
             </li>
           {%- endfor %}
         </ul>
