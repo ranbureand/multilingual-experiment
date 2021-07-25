@@ -499,7 +499,7 @@ What does the first block of code do?
 
 We create a new variable named `navigation_pages` which returns a list of the pages that, [in their front matter](#pages-1), have:
 
-+ the `language_reference` variable equal to the current page’s language_reference variable (`page.language_reference`)
++ the `language_reference` variable equal to the current page’s `language_reference` variable (`page.language_reference`)
 + the `language` variable equal to the slug of the current language item in the array `snippets.languages`
 
 If we set the front matter of the pages correctly, the size of the array `navigation_pages` should be:
