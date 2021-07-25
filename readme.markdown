@@ -443,20 +443,20 @@ languages:
     slug: it
 ```
 
-The for loop contains three different code blocks that are executed only if specific conditions are met. If we were to look only at its high-level structure:
+The *for* loop contains three different code blocks that are executed only if specific conditions are met. If we were to look only at its high-level structure:
 
 ``` liquid
 <ul>
   {%- for language in snippets.languages %}
 
     {%- if page.layout == 'page' %}
-    …
+      <!-- first code block -->
 
     {%- elsif page.layout == 'post' %}
-    …
+      <!-- second code block -->
 
     {%- else %}
-    …
+      <!-- third code block -->
 
     {%- endif %}
     <li>
@@ -500,7 +500,12 @@ What does the first block of code do?
 We create a new variable named `navigation_pages` which returns a list of the pages that, [in their front matter](#pages-1), have:
 
 + the `language_reference` variable equal to the current page’s language_reference variable (`page.language_reference`)
-+ the `language` variable equal to the slug of the current language in the array `snippets.languages`
++ the `language` variable equal to the slug of the current language item in the array `snippets.languages`
+
+If we set the front matter of the pages correctly, the size of the array `navigation_pages` should be:
+
++ equal to one if the current page <u>has</u> a corresponding page translated in the current language in the array `snippets.languages`
++ equal to zero if the current page <u>does not have</u> a corresponding page in the current language item in the array `snippets.languages`
 
 ``` liquid
 {%- if navigation_pages.size > 0 %}
@@ -509,7 +514,7 @@ We create a new variable named `navigation_pages` which returns a list of the pa
   {%- endfor %}
 ```
 
-If the size of the array `navigation_pages` is bigger than 0—it should be at most one—we loop through
+If the size of the array `navigation_pages` is equal to one, we loop through the array `navigation_pages` and create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and the url of the one page (`nav_page.url`)
 
 *To be continued soon…*
 
