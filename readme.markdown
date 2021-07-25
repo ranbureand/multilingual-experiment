@@ -11,14 +11,20 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
     + [Exceptions](#exceptions)
   + [Posts](#posts)
     + [Configuration](#configuration)
-+ [Pages](#pages-1)
-+ [Posts](#posts-1)
++ Front Matter
+  + [Pages](#pages-1)
+  + [Posts](#posts-1)
 + [Snippets](#snippets)
 + [Includes](#includes)
-  + [header.html](#header-html)
-  + [localizations.html](#localizations-html)
+  + [header.html](#headerhtml)
+    + [navigation.html](#navigationhtml)
+    + [language-switch.html](#language-switchhtml)
+      + [if page.layout == 'page'](##if-pagelayout--page)
+      + [elsif page.layout == 'post'](##elsif-pagelayout--post)
+      + [else](##else)
+  + [localizations.html](#localizationshtml)
 + [Sundries](#sundries)
-  + [Multilingual Sitemap](#multilingual-sitemap)
+  + [Multilingual Sitemap](#multilingualsitemap)
   + [RSS Feed](#rss-feed)
 + [Resources](#resources)
 
@@ -161,7 +167,9 @@ defaults:
 
 By setting global permalinks for posts, we can reach, for example, the English post named `2021-01-01-hello-world.markdown` and the Italian post named `2021-01-01-ciao-mondo.markdown` at the URLs `www.site.ext/en/hello-world.html` and `www.site.ext/it/ciao-mondo.html`, respectively.
 
-## Pages
+## Front Matter
+
+### Pages
 
 Here is how the front matter of a page looks like:
 
@@ -218,7 +226,7 @@ Both pages have the variable `language_reference` set to `stories` so that they 
 
 We can use `language` to retrieve only the pages that have the same language, and `language_reference` to retrieve only the pages that return the same content translated in different languages.
 
-## Posts
+### Posts
 
 Here is how the front matter of a post looks like:
 
