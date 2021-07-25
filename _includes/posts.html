@@ -1,5 +1,8 @@
         <ul>
-          {%- assign posts = site.posts | where: 'publish', 'yes' | where: 'language', page.language %}
+          {%- assign posts = site.posts
+            | where: 'language', page.language
+            | where: 'published', true
+            %}
           {%- for post in posts %}
             <li>
               <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

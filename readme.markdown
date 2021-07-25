@@ -174,6 +174,8 @@ description: Stories.
 
 language: en
 language_reference: stories
+
+published: true
 ---
 ```
 
@@ -191,6 +193,8 @@ description: Stories.
 
 language: en
 language_reference: stories
+
+published: true
 ---
 ```
 
@@ -205,6 +209,8 @@ description: Storie.
 
 language: it
 language_reference: stories
+
+published: true
 ---
 ```
 
@@ -227,7 +233,7 @@ date: '2021-01-01 00:00:00'
 language: 'en'
 language_reference: 'world'
 
-publish: 'yes'
+published: true
 ---
 ```
 
@@ -246,7 +252,7 @@ date: '2021-01-01 00:00:00'
 language: 'en'
 language_reference: 'world'
 
-publish: 'yes'
+published: true
 ---
 ```
 
@@ -263,7 +269,7 @@ date: '2021-01-01 00:00:00'
 language: 'it'
 language_reference: 'world'
 
-publish: 'yes'
+published: true
 ---
 ```
 
@@ -313,7 +319,7 @@ top:
 
 ### header.html
 
-The include `header.html` generates the `<header/>` tag in the HTML page. It, in turn, has three more includes:
+The include `header.html` generates the header in the HTML page. It, in turn, has three more includes:
 
 + `site-title.html`
 + `navigation.html`
@@ -332,7 +338,32 @@ The include `header.html` generates the `<header/>` tag in the HTML page. It, in
 
 #### navigation.html
 
-*Coming soon…*
+The include `header.html` generates a unordered list containing all the published pages having the same `language` variable as the current page:
+
+``` liquid
+<ul>
+  {%- assign navigation_pages = site.pages
+    | where: 'layout', 'page'
+    | where: 'language', page.language
+    | where: 'published', true
+    | sort: 'order' %}
+  {%- for navigation_page in navigation_pages %}
+  <li>
+    <a href="{{ site.baseurl }}{{ navigation_page.url }}" {%- if navigation_page.title == page.title %} class="current"{%- endif %}>{{ navigation_page.title }}</a>
+  </li>
+  {%- endfor %}
+</ul>
+```
+
+In the piece of code above, we create a new variable named `navigation_pages` which returns a list of the pages that, in their front matter, have:
+
++ the `layout` variable set to `page`
++ the `language` variable set to the language of the current page (`page.language`)
++ the `published` variable set to `true`
+
+and we order the list according to the `order` variable.
+
+We then loop trough the array of pages and generate the list items of the unordered list. Whenever the title of the current page in the array (`navigation_page.title`) matches the title of the current page (`page.title`), we add a class named `current` to the corresponding `<a/>` tag.
 
 #### language-switch.html
 

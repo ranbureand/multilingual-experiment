@@ -1,7 +1,9 @@
-        <ul class="navigation-pages">
+        <ul>
           {%- assign navigation_pages = site.pages
+            | where: 'layout', 'page'
             | where: 'language', page.language
-            | where: 'layout', 'page', %}
+            | where: 'published', true
+            | sort: 'order' %}
           {%- for navigation_page in navigation_pages %}
           <li>
             <a href="{{ site.baseurl }}{{ navigation_page.url }}" {%- if navigation_page.title == page.title %} class="current"{%- endif %}>{{ navigation_page.title }}</a>
