@@ -11,7 +11,7 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
     + [Exceptions](#exceptions)
   + [Posts](#posts)
     + [Configuration](#configuration)
-+ Front Matter
++ [Front Matter](#front-matter)
   + [Pages](#pages-1)
   + [Posts](#posts-1)
 + [Snippets](#snippets)
