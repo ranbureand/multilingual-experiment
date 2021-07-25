@@ -338,7 +338,7 @@ The include `header.html` generates the header in the HTML page. It, in turn, ha
 
 #### navigation.html
 
-The include `navigation.html` generates a unordered list containing all the published pages having the same `language` variable as the current page.
+The include `navigation.html` generates an unordered list containing all the published pages having the same `language` variable as the current page.
 
 ``` liquid
 <ul>
@@ -355,7 +355,7 @@ The include `navigation.html` generates a unordered list containing all the publ
 </ul>
 ```
 
-In the piece of code above, we create a new variable named `navigation_pages` which returns a list of the pages that, [in their front matter](#pages-1), have:
+In the code above, we create a new variable named `navigation_pages` which returns a list of the pages that, [in their front matter](#pages-1), have:
 
 + the `layout` variable set to `page`
 + the `language` variable set to the language of the current page (`page.language`)
@@ -367,7 +367,98 @@ Whenever the title of the current page in the array (`navigation_page.title`) ma
 
 #### language-switch.html
 
-*Coming soon…*
+The include `language-switch.html` generates an unordered list containing all the languages supported in the site.
+
+``` liquid
+<ul>
+  {%- for language in snippets.languages %}
+
+    {%- if page.layout == 'page' %}
+      {%- assign navigation_pages = site.pages
+        | where: 'language_reference', page.language_reference
+        | where: 'language', language[1].slug %}
+      {%- if navigation_pages.size > 0 %}
+        {%- for nav_page in navigation_pages %}
+          {%- assign url = site.baseurl | append: nav_page.url %}
+        {%- endfor %}
+      {%- else %}
+        {%- assign navigation_pages = site.pages
+          | where: 'language_reference', 'stories'
+          | where: 'language', language[1].slug %}
+        {%- for nav_page in navigation_pages %}
+          {%- assign url = site.baseurl | append: nav_page.url %}
+        {%- endfor %}
+      {%- endif %}
+
+    {%- elsif page.layout == 'post' %}
+      {%- assign nav_posts = site.posts
+        | where: 'language_reference', page.language_reference
+        | where: 'language', language[1].slug %}
+      {%- if nav_posts.size > 0 %}
+        {%- for nav_post in nav_posts %}
+          {%- assign url = site.baseurl | append: nav_post.url %}
+        {%- endfor %}
+      {%- else %}
+        {%- assign navigation_pages = site.pages
+          | where: 'language_reference', 'stories'
+          | where: 'language', language[1].slug %}
+        {%- for nav_page in navigation_pages %}
+          {%- assign url = site.baseurl | append: nav_page.url %}
+        {%- endfor %}
+      {%- endif %}
+
+    {%- else %}
+      {%- assign navigation_pages = site.pages
+        | where: 'language_reference', 'stories'
+        | where: 'language', language[1].slug %}
+      {%- for nav_page in navigation_pages %}
+        {%- assign url = site.baseurl | append: nav_page.url %}
+      {%- endfor %}
+
+    {%- endif %}
+    <li>
+      <a href="{{ url }}" {%- if language[1].slug == page.language %} class="current"{%- endif %}>{{ language[1].value }}</a>
+    </li>
+  {%- endfor %}
+</ul>
+```
+
+In the code above, we loop through the languages defined in the `snippets.html` file.
+
+``` yaml
+languages:
+  en:
+    value: English
+    slug: en
+  it:
+    value: Italian
+    slug: it
+```
+
+The for loop contains three different code blocks that are executed only if specific conditions are met. If we were to look only at its high-level structure:
+
+``` liquid
+<ul>
+  {%- for language in snippets.languages %}
+
+    {%- if page.layout == 'page' %}
+    …
+
+    {%- elsif page.layout == 'post' %}
+    …
+
+    {%- else %}
+    …
+
+    {%- endif %}
+    <li>
+      <a href="{{ url }}" {%- if language[1].slug == page.language %} class="current"{%- endif %}>{{ language[1].value }}</a>
+    </li>
+  {%- endfor %}
+</ul>
+```
+
+We execute the first block of code only if the `layout` variable of the page is set to `page`, else, if it is set to `post`, we execute the second block of code, else, if it is set to anything else, we execute the third block of code.
 
 #### site-title.html
 
