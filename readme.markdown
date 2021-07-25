@@ -514,7 +514,7 @@ If we set the front matter of the pages correctly, the size of the array `naviga
   {%- endfor %}
 ```
 
-If the size of the array `navigation_pages` is equal to one, we loop through the array `navigation_pages` and create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and the url of the one page (`nav_page.url`).
+If the size of the array `navigation_pages` is equal to one, we loop through the array `navigation_pages` and create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and the url of the one page (`nav_page.url`) contained in the array.
 
 *To be continued soon…*
 
