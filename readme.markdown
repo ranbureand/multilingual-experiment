@@ -361,9 +361,9 @@ In the piece of code above, we create a new variable named `navigation_pages` wh
 + the `language` variable set to the language of the current page (`page.language`)
 + the `published` variable set to `true`
 
-and we order the list according to the `order` variable.
+and we order the list according to the `order` variable. We then loop trough the array of pages and generate the list items of the unordered list.
 
-We then loop trough the array of pages and generate the list items of the unordered list. Whenever the title of the current page in the array (`navigation_page.title`) matches the title of the current page (`page.title`), we add a class named `current` to the corresponding `<a/>` tag.
+Whenever the title of the current page in the array (`navigation_page.title`) matches the title of the current page (`page.title`), we add a class named `current` to the corresponding `<a/>` tag.
 
 #### language-switch.html
 
