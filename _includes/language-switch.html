@@ -6,40 +6,40 @@
                 | where: 'language_reference', page.language_reference
                 | where: 'language', language[1].slug %}
               {%- if navigation_pages.size == 1 %}
-                {%- for nav_page in navigation_pages %}
-                  {%- assign url = site.baseurl | append: nav_page.url %}
+                {%- for navigation_page in navigation_pages %}
+                  {%- assign url = site.baseurl | append: navigation_page.url %}
                 {%- endfor %}
               {%- else %}
                 {%- assign navigation_pages = site.pages
-                  | where: 'language_reference', 'stories'
+                  | where: 'language_reference', site.fallback_page
                   | where: 'language', language[1].slug %}
                 {%- for nav_page in navigation_pages %}
-                  {%- assign url = site.baseurl | append: nav_page.url %}
+                  {%- assign url = site.baseurl | append: navigation_page.url %}
                 {%- endfor %}
               {%- endif %}
 
             {%- elsif page.layout == 'post' %}
-              {%- assign nav_posts = site.posts
+              {%- assign navigation_posts = site.posts
                 | where: 'language_reference', page.language_reference
                 | where: 'language', language[1].slug %}
-              {%- if nav_posts.size == 1 %}
-                {%- for nav_post in nav_posts %}
-                  {%- assign url = site.baseurl | append: nav_post.url %}
+              {%- if navigation_posts.size == 1 %}
+                {%- for navigation_post in navigation_posts %}
+                  {%- assign url = site.baseurl | append: navigation_post.url %}
                 {%- endfor %}
               {%- else %}
                 {%- assign navigation_pages = site.pages
-                  | where: 'language_reference', 'stories'
+                  | where: 'language_reference', site.fallback_page
                   | where: 'language', language[1].slug %}
-                {%- for nav_page in navigation_pages %}
-                  {%- assign url = site.baseurl | append: nav_page.url %}
+                {%- for navigation_page in navigation_pages %}
+                  {%- assign url = site.baseurl | append: navigation_page.url %}
                 {%- endfor %}
               {%- endif %}
 
             {%- else %}
               {%- assign navigation_pages = site.pages
-                | where: 'language_reference', 'stories'
+                | where: 'language_reference', site.fallback_page
                 | where: 'language', language[1].slug %}
-              {%- for nav_page in navigation_pages %}
+              {%- for navigation_page in navigation_pages %}
                 {%- assign url = site.baseurl | append: nav_page.url %}
               {%- endfor %}
 

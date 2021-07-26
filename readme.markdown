@@ -386,41 +386,41 @@ The include `language-switch.html` generates an unordered list containing all th
         | where: 'language_reference', page.language_reference
         | where: 'language', language[1].slug %}
       {%- if navigation_pages.size == 1 %}
-        {%- for nav_page in navigation_pages %}
-          {%- assign url = site.baseurl | append: nav_page.url %}
+        {%- for navigation_page in navigation_pages %}
+          {%- assign url = site.baseurl | append: navigation_page.url %}
         {%- endfor %}
       {%- else %}
         {%- assign navigation_pages = site.pages
-          | where: 'language_reference', 'stories'
+          | where: 'language_reference', site.fallback_page
           | where: 'language', language[1].slug %}
-        {%- for nav_page in navigation_pages %}
-          {%- assign url = site.baseurl | append: nav_page.url %}
+        {%- for navigation_page in navigation_pages %}
+          {%- assign url = site.baseurl | append: navigation_page.url %}
         {%- endfor %}
       {%- endif %}
 
     {%- elsif page.layout == 'post' %}
-      {%- assign nav_posts = site.posts
+      {%- assign navigation_posts = site.posts
         | where: 'language_reference', page.language_reference
         | where: 'language', language[1].slug %}
-      {%- if nav_posts.size == 1 %}
-        {%- for nav_post in nav_posts %}
-          {%- assign url = site.baseurl | append: nav_post.url %}
+      {%- if navigation_posts.size == 1 %}
+        {%- for navigation_post in navigation_posts %}
+          {%- assign url = site.baseurl | append: navigation_post.url %}
         {%- endfor %}
       {%- else %}
         {%- assign navigation_pages = site.pages
-          | where: 'language_reference', 'stories'
+          | where: 'language_reference', site.fallback_page
           | where: 'language', language[1].slug %}
-        {%- for nav_page in navigation_pages %}
-          {%- assign url = site.baseurl | append: nav_page.url %}
+        {%- for navigation_page in navigation_pages %}
+          {%- assign url = site.baseurl | append: navigation_page.url %}
         {%- endfor %}
       {%- endif %}
 
     {%- else %}
       {%- assign navigation_pages = site.pages
-        | where: 'language_reference', 'stories'
+        | where: 'language_reference', site.fallback_page
         | where: 'language', language[1].slug %}
-      {%- for nav_page in navigation_pages %}
-        {%- assign url = site.baseurl | append: nav_page.url %}
+      {%- for navigation_page in navigation_pages %}
+        {%- assign url = site.baseurl | append: navigation_page.url %}
       {%- endfor %}
 
     {%- endif %}
@@ -443,7 +443,7 @@ languages:
     slug: it
 ```
 
-The *for* loop contains three different code blocks that are executed only if specific conditions are met. If we were to look only at its high-level structure:
+The *for* loop contains three different code blocks that are run only if specific conditions are met. If we were to look only at its high-level structure:
 
 ``` liquid
 <ul>
@@ -466,7 +466,7 @@ The *for* loop contains three different code blocks that are executed only if sp
 </ul>
 ```
 
-We execute the first block of code only if the `layout` variable of the current page is set to `page`, else, if it is set to `post`, we execute the second block of code, else, if it is set to anything else (or to nothing at all), we execute the third block of code.
+We run the first block of code only if the `layout` variable of the current page is set to `page`, else, if it is set to `post`, we run the second block of code, else, if it is set to anything else (or to nothing at all), we run the third block of code.
 
 ##### if page.layout == 'page'
 
@@ -476,15 +476,15 @@ We execute the first block of code only if the `layout` variable of the current 
     | where: 'language_reference', page.language_reference
     | where: 'language', language[1].slug %}
   {%- if navigation_pages.size == 1 %}
-    {%- for nav_page in navigation_pages %}
-      {%- assign url = site.baseurl | append: nav_page.url %}
+    {%- for navigation_page in navigation_pages %}
+      {%- assign url = site.baseurl | append: navigation_page.url %}
     {%- endfor %}
   {%- else %}
     {%- assign navigation_pages = site.pages
-      | where: 'language_reference', 'stories'
+      | where: 'language_reference', site.fallback_page
       | where: 'language', language[1].slug %}
-    {%- for nav_page in navigation_pages %}
-      {%- assign url = site.baseurl | append: nav_page.url %}
+    {%- for navigation_page in navigation_pages %}
+      {%- assign url = site.baseurl | append: navigation_page.url %}
     {%- endfor %}
   {%- endif %}
 ```
@@ -504,65 +504,77 @@ We create a new variable named `navigation_pages` which returns a list of the pa
 
 If we set the front matter of the pages correctly, the size of the array `navigation_pages` should be:
 
-+ equal to one if the current page <u>has</u> a corresponding page translated in the current language in the array `snippets.languages`
-+ equal to zero if the current page <u>does not have</u> a corresponding page in the current language item in the array `snippets.languages`
++ equal to one if the current page <u>has</u> a corresponding page translated in the current language item of the array `snippets.languages`
++ equal to zero if the current page <u>does not have</u> a corresponding page translated in the current language item of the array `snippets.languages`
 
 ``` liquid
 {%- if navigation_pages.size == 1 %}
-  {%- for nav_page in navigation_pages %}
-    {%- assign url = site.baseurl | append: nav_page.url %}
+  {%- for navigation_page in navigation_pages %}
+    {%- assign url = site.baseurl | append: navigation_page.url %}
   {%- endfor %}
 ```
 
-If the size of the array `navigation_pages` is equal to one, we loop through the array `navigation_pages` and create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and the url of the one page (`nav_page.url`) contained in the array.
+If the size of the array `navigation_pages` is equal to one, we loop through the array `navigation_pages` and create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and the url of the one page (`navigation_page.url`) contained in the array `navigation_pages`.
 
 ``` liquid
 {%- else %}
   {%- assign navigation_pages = site.pages
-    | where: 'language_reference', 'stories'
+    | where: 'language_reference', site.fallback_page
     | where: 'language', language[1].slug %}
-  {%- for nav_page in navigation_pages %}
-    {%- assign url = site.baseurl | append: nav_page.url %}
+  {%- for navigation_page in navigation_pages %}
+    {%- assign url = site.baseurl | append: navigation_page.url %}
   {%- endfor %}
 {%- endif %}
 ```
 
-On the other hand, if the size of the array `navigation_pages` is equal to zero, 
+If instead, the size of the array `navigation_pages` is equal to zero, we do not have a corresponding page in the current language item of the array `snippets.languages` to switch to.
 
-*To be continued soon…*
+Thus, we provide a fallback page (`site.fallback_page`) so that web surfers who interact with the language switch and press on a language that does not support the current page are at least redirected to a meaningful page in the language they selected.
+
+We set the `fallback_page` in the `_config.yml` file placed in the site’s root directory:
+
+``` yaml
+fallback_page: 'stories'
+```
+
+The fallback pages of this basic site are those whose `language_reference` variable is set to `stories`.
 
 ##### elsif page.layout == 'post'
 
 ``` liquid
 {%- elsif page.layout == 'post' %}
-  {%- assign nav_posts = site.posts
+  {%- assign navigation_posts = site.posts
     | where: 'language_reference', page.language_reference
     | where: 'language', language[1].slug %}
-  {%- if nav_posts.size == 1 %}
-    {%- for nav_post in nav_posts %}
-      {%- assign url = site.baseurl | append: nav_post.url %}
+  {%- if navigation_posts.size == 1 %}
+    {%- for navigation_post in navigation_posts %}
+      {%- assign url = site.baseurl | append: navigation_post.url %}
     {%- endfor %}
   {%- else %}
     {%- assign navigation_pages = site.pages
-      | where: 'language_reference', 'stories'
+      | where: 'language_reference', site.fallback_page
       | where: 'language', language[1].slug %}
-    {%- for nav_page in navigation_pages %}
-      {%- assign url = site.baseurl | append: nav_page.url %}
+    {%- for navigation_page in navigation_pages %}
+      {%- assign url = site.baseurl | append: navigation_page.url %}
     {%- endfor %}
   {%- endif %}
 ```
+
+The second block of code behaves akin to the first, with the only difference that we manipulate an array of posts (`navigation_posts`) rather than one of pages (`navigation_pages`).
 
 ##### else
 
 ``` liquid
 {%- else %}
   {%- assign navigation_pages = site.pages
-    | where: 'language_reference', 'stories'
+    | where: 'language_reference', site.fallback_page
     | where: 'language', language[1].slug %}
-  {%- for nav_page in navigation_pages %}
-    {%- assign url = site.baseurl | append: nav_page.url %}
+  {%- for navigation_page in navigation_pages %}
+    {%- assign url = site.baseurl | append: navigation_page.url %}
   {%- endfor %}
 ```
+
+The third block of code runs in the remote eventuality in which both the first and second blocks of code are not run, so that we make sure, again, to serve a fallback page to web surfers.
 
 #### site-title.html
 

@@ -1,12 +1,14 @@
 # Site settings
-title: "Multilingual Experiment"
-description: "A basic site to experiment with Jekyll and multilingual sites."
+title: 'Multilingual Experiment'
+description: 'A basic site to experiment with Jekyll and multilingual sites.'
 
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: '/' # the subpath of your site, e.g. /blog
+url: '' # the base hostname & protocol for your site, e.g. http://example.com
 
-version: "2021-01-01"
-default_language: "en"
+version: '2021-01-01'
+
+default_language: 'en'
+fallback_page: 'stories'
 
 timezone: Europe/Rome
 encoding: utf-8
