@@ -463,14 +463,18 @@ The *for* loop contains three different code blocks that are run only if specifi
       <!-- third code block -->
 
     {%- endif %}
-    <li>
-      <a href="{{ url }}" {%- if language[1].slug == page.language %} class="current"{%- endif %}>{{ language[1].value }}</a>
+    <li {%- if language[1].slug == page.language %} class="current"{%- endif %}>
+      <a href="{{ url }}">{{ language[1].value }}</a>
     </li>
   {%- endfor %}
 </ul>
 ```
 
 We run the first block of code only if the `layout` variable of the current page is set to `page`, else, if it is set to `post`, we run the second block of code, else, if it is set to anything else (or to nothing at all), we run the third block of code.
+
+After at least one of the code blocks has been run, we generate the list items of the unordered list.
+
+Whenever the slug of the current language item of the array `snippets.languages` (`language[1].slug`) matches the language of the current page (`page.language`), we add a class named `current` to the corresponding `<li/>` tag.
 
 ##### if page.layout == 'page'
 
