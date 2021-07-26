@@ -123,7 +123,9 @@ After Jekyll has built the site, we can reach, for example, the English page `st
 
 But, of course, there are exceptions. We place the pages `404.html`, `index.html`, and `sitemap.html` in the root directory of the site. Why?
 
-`404.html` and `index.html` are *unique* pages because Jekyll builds and serves automatically one and only one of them at a time. `sitemap.xml` instead is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders (read the section [Multilingual Sitemap](#multilingual-sitemap) for more details).
+`404.html` and `index.html` are *unique* pages because Jekyll builds and serves automatically one and only one of them at a time.
+
+`sitemap.xml` instead is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders (read the section [Multilingual Sitemap](#multilingual-sitemap) for more details).
 
 ### Posts
 
@@ -289,11 +291,13 @@ Again, we can use `language` to retrieve only the posts that have the same langu
 
 We create a YAML [Data File](https://jekyllrb.com/docs/datafiles/ "Data Files") named `snippets.yml` to store the different translations of the user interface copy as additional data in the `_data` subdirectory.
 
-We then create a new variable named `snippets` in the `base.html` layout (since the `base.html` layout works as the base for all the other layouts) to shorten the code that we need to write to access the data contained in the `snippets.yml` file:
+We then create a new variable named `snippets` in the `base.html` layout to shorten the code that we need to write to access the data contained in the `snippets.yml` file:
 
 ``` liquid
 {%- assign snippets = site.data.snippets %}
 ```
+
+Since the `base.html` layout works as the base for all the other layouts, if we place the variable `snippets` there we can then call it from any page.
 
 Through this variable, we can write just `snippets.name_of_the_data_item` when accessing a data item rather than the full, longer `site.data.snippets.name_of_the_data_item`.
 
@@ -323,7 +327,7 @@ top:
 
 ## Includes
 
-*Coming soon…*
+Most of the includes in this basic site are used in building its navigation.
 
 ### header.html
 
