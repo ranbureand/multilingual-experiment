@@ -1,15 +1,13 @@
-      {%- for language in snippets.languages %}
-        {%- if page.language == site.default_language %}
-          {%- assign url = site.baseurl | append: '/'%}
-        {%- else %}
-          {%- assign nav_pages = site.pages
-            | where: 'language_reference', site.fallback_page
-            | where: 'language', page.language %}
-          {%- for nav_page in nav_pages %}
-            {%- assign url = site.baseurl | append: nav_page.url %}
-          {%- endfor %}
-        {%- endif %}
-      {%- endfor %}
+      {%- if page.language == site.default_language %}
+        {%- assign url = site.baseurl | append: '/'%}
+      {%- else %}
+        {%- assign navigation_pages = site.pages
+          | where: 'language_reference', site.fallback_page
+          | where: 'language', page.language %}
+        {%- for navigation_page in navigation_pages %}
+          {%- assign url = site.baseurl | append: navigation_page.url %}
+        {%- endfor %}
+      {%- endif %}
       <h1>
         <a href="{{ url }}" {%- if page.url == '/' %} class="current"{%- endif %}>{{ site.title }}</a>
       </h1>

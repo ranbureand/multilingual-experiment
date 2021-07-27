@@ -16,7 +16,7 @@
 
 {%- elsif page.layout == 'index' %}
   {%- assign localized_pages = site.pages
-    | where: 'language_reference', 'stories'
+    | where: 'language_reference', site.fallback_page
     | sort: 'language' %}
   {%- for localized_page in localized_pages %}
     <link rel="alternate" hreflang="{{ localized_page.language }}" href="{{ site.baseurl }}{{ localized_page.url }}" />

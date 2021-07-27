@@ -22,6 +22,7 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
       + [if page.layout == 'page'](#if-pagelayout--page)
       + [elsif page.layout == 'post'](#elsif-pagelayout--post)
       + [else](#else)
+    + [title.html](#titlehtml)
   + [localizations.html](#localizationshtml)
 + [Sundries](#sundries)
   + [Multilingual Sitemap](#multilingualsitemap)
@@ -333,7 +334,7 @@ The purpose of most of the includes in this basic site is building the navigatio
 
 The include `header.html` generates the header in the HTML page. It, in turn, has three more includes:
 
-+ `site-title.html`
++ `title.html`
 + `navigation.html`
 + `language-switch.html`
 
@@ -547,9 +548,9 @@ fallback_page: 'stories'
 
 The fallback pages of this basic site are those whose `language_reference` variable is set to `stories`.
 
-Why `stories`? Because the pages whose `language_reference` variable is set to `stories` work *home* pages, since they:
+Why `stories`? Because the pages whose `language_reference` variable is set to `stories` work as *home* pages, since they:
 
-+ have exactly the same structure as the `index.html` page and thus return a list of all the published posts
++ return a list of all the published posts (they have exactly the same structure as the `index.html` page)
 + have a translated counterpart in all the languages supported on the site
 
 ##### elsif page.layout == 'post'
@@ -587,11 +588,33 @@ The second block of code behaves akin to the first, with the only difference tha
   {%- endfor %}
 ```
 
-The third block of code runs in the remote eventuality in which both the first and second blocks of code are not run, so that we make sure, again, to serve a fallback page to web surfers.
+The third block of code runs in the remote eventuality in which both the first and second blocks of code are not run, so that we make sure, again, to serve a fallback page to our web surfers.
 
-#### site-title.html
+#### title.html
 
-*Coming soon…*
+The include `title.html` generates the title of this basic site.
+
+``` liquid
+{%- if page.language == site.default_language %}
+  {%- assign url = site.baseurl | append: '/'%}
+{%- else %}
+  {%- assign navigation_pages = site.pages
+    | where: 'language_reference', site.fallback_page
+    | where: 'language', page.language %}
+  {%- for navigation_page in navigation_pages %}
+    {%- assign url = site.baseurl | append: navigation_page.url %}
+  {%- endfor %}
+{%- endif %}
+<h1>
+  <a href="{{ url }}" {%- if page.url == '/' %} class="current"{%- endif %}>{{ site.title }}</a>
+</h1>
+```
+
+Again we have two different code blocks that are run only if specific conditions are met.
+
+We run the first code block when the language of the current page (`page.language`) is equal to the default language (`site.default_language`) defined in the `_config.yml` file. Through it we create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and `/`, that is, the domain name of the site.
+
+Else, we run the second code block to provide the usual fallback page already discussed above (read the section [language-switch.html](#language-switchhtml) for more details).
 
 ### localizations.html
 
