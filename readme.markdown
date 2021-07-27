@@ -610,7 +610,7 @@ The include `title.html` generates the title of this basic site.
 </h1>
 ```
 
-Again we have two different code blocks that are run only if specific conditions are met.
+Again, we have two different code blocks that are run only if specific conditions are met.
 
 We run the first code block when the language of the current page (`page.language`) is equal to the default language (`site.default_language`) defined in the `_config.yml` file. Through it we create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and `/`, that is, the domain name of the site. Web surfers who browse the site in the default language are directed to the main page when they press on the title.
 
@@ -618,7 +618,36 @@ Else, we run the second code block to provide the usual fallback page already di
 
 ### localizations.html
 
-*Coming soon…*
+The include `localizations.html` adds `<link rel="alternate" … />` tags in the `<head/>` tag of a page [to tell search engines](https://developers.google.com/search/docs/advanced/crawling/localized-versions "Tell Google about localized versions of your page") if there are multiple versions of the page for different languages or regions.
+
+``` liquid
+{%- if page.layout == 'page' %}
+  {%- assign localized_pages = site.pages
+    | where: 'language_reference', page.language_reference
+    | sort: 'language' %}
+  {%- for localized_page in localized_pages %}
+    <link rel="alternate" hreflang="{{ localized_page.language }}" href="{{ site.baseurl }}{{ localized_page.url }}" />
+  {%- endfor %}
+
+{%- elsif page.layout == 'post' %}
+  {%- assign localized_posts = site.posts
+  | where: 'language_reference', page.language_reference
+  | sort: 'language' %}
+  {%- for localized_post in localized_posts %}
+    <link rel="alternate" hreflang="{{ localized_post.language }}" href="{{ site.baseurl }}{{ localized_post.url }}" />
+  {%- endfor %}
+
+{%- elsif page.layout == 'index' %}
+  {%- assign localized_pages = site.pages
+    | where: 'language_reference', site.fallback_page
+    | sort: 'language' %}
+  {%- for localized_page in localized_pages %}
+    <link rel="alternate" hreflang="{{ localized_page.language }}" href="{{ site.baseurl }}{{ localized_page.url }}" />
+  {%- endfor %}
+{%- endif %}
+```
+
+Again, we have three different code blocks that are run only if specific conditions are met (read the section [language-switch.html](#language-switchhtml) for more details).
 
 ## Sundries
 
