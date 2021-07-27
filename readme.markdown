@@ -96,7 +96,7 @@ The directory structure of this basic site looks like this:
 
 ### Pages
 
-We organize the pages into as many subdirectory as the languages that we plan to support, named using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools"). This basic site has two subdirectories, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
+We organize the pages into as many subdirectory as the languages that we plan to support, and name them using [ISO language codes](https://www.w3schools.com/tags/ref_language_codes.asp "HTML Language Code Reference in W3Schools"). This basic site has two subdirectories, one named `en` for grouping the English pages, and one named `it` for grouping the Italian pages.
 
 ```
 ├── …
@@ -297,7 +297,7 @@ We then create a new variable named `snippets` in the `base.html` layout to shor
 {%- assign snippets = site.data.snippets %}
 ```
 
-Since the `base.html` layout works as the base for all the other layouts, if we place the variable `snippets` there we can then call it from any page.
+Since the `base.html` layout works as the base for all the other layouts, if we place the variable `snippets` there, we can then call it from any page.
 
 Through this variable, we can write just `snippets.name_of_the_data_item` when accessing a data item rather than the full, longer `site.data.snippets.name_of_the_data_item`.
 
@@ -535,7 +535,7 @@ If the size of the array `navigation_pages` is equal to one, we loop through the
 {%- endif %}
 ```
 
-If instead, the size of the array `navigation_pages` is equal to zero, we do not have a corresponding page in the current language item of the array `snippets.languages` to switch to.
+If instead, the size of the array `navigation_pages` is equal to zero (or more than one, which is trouble), we do not have a corresponding page in the current language item of the array `snippets.languages` to switch to.
 
 Thus, we provide a fallback page (`site.fallback_page`) so that web surfers who interact with the language switch and press on a language that does not support the current page are at least redirected to a meaningful page in the language they selected.
 
@@ -546,6 +546,11 @@ fallback_page: 'stories'
 ```
 
 The fallback pages of this basic site are those whose `language_reference` variable is set to `stories`.
+
+Why `stories`? Because the pages whose `language_reference` variable is set to `stories` work *home* pages, since they:
+
++ have exactly the same structure as the `index.html` page and thus return a list of all the published posts
++ have a translated counterpart in all the languages supported on the site
 
 ##### elsif page.layout == 'post'
 
