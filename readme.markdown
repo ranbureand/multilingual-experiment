@@ -30,7 +30,7 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
 
 ## Preface
 
-When I found myself coding a multilingual site in *[Jekyll](https://jekyllrb.com/ "Jekyll")*, I stumbled on [a lot of useful resources](#resources) while surfing the Web, but I struggled not a little while trying to digest and replicate their approaches because of the lack of a concrete, working example to look at.
+When I found myself coding a multilingual site in [Jekyll](https://jekyllrb.com/ "Jekyll"), I stumbled on [a lot of useful resources](#resources) while surfing the Web, but I struggled not a little while trying to digest and replicate their approaches because of the lack of a concrete, working example to look at.
 
 At first, I tried to replicate their approaches directly in the site I was working on, but this quickly backfired because it proved to be too big of a bite to chew for a designer who codes.
 
@@ -327,7 +327,7 @@ top:
 
 ## Includes
 
-Most of the includes in this basic site are used in building its navigation.
+The purpose of most of the includes in this basic site is building the navigation.
 
 ### header.html
 
@@ -512,8 +512,8 @@ We create a new variable named `navigation_pages` which returns a list of the pa
 
 If we set the front matter of the pages correctly, the size of the array `navigation_pages` should be:
 
-+ equal to one if the current page <u>has</u> a corresponding page translated in the current language item of the array `snippets.languages`
-+ equal to zero if the current page <u>does not have</u> a corresponding page translated in the current language item of the array `snippets.languages`
++ either equal to one if the current page <u>has</u> a corresponding page translated in the current language item of the array `snippets.languages`
++ or equal to zero if the current page <u>does not have</u> a corresponding page translated in the current language item of the array `snippets.languages`
 
 ``` liquid
 {%- if navigation_pages.size == 1 %}
