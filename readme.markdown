@@ -612,9 +612,9 @@ The include `title.html` generates the title of this basic site.
 
 Again we have two different code blocks that are run only if specific conditions are met.
 
-We run the first code block when the language of the current page (`page.language`) is equal to the default language (`site.default_language`) defined in the `_config.yml` file. Through it we create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and `/`, that is, the domain name of the site.
+We run the first code block when the language of the current page (`page.language`) is equal to the default language (`site.default_language`) defined in the `_config.yml` file. Through it we create a new variable named `url` by combining the `site.baseurl` (defined in the `_config.yml` file) and `/`, that is, the domain name of the site. Web surfers who browse the site in the default language are directed to the main page when they press on the title.
 
-Else, we run the second code block to provide the usual fallback page already discussed above (read the section [language-switch.html](#language-switchhtml) for more details).
+Else, we run the second code block to provide the usual fallback page already discussed above (read the section [language-switch.html](#language-switchhtml) for more details). Web surfers who browse the site in a language different than the default one are directed to the fallback page in their current language when they press on the title.
 
 ### localizations.html
 
