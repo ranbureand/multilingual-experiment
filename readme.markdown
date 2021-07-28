@@ -14,7 +14,8 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
 + [Front Matter](#front-matter)
   + [Pages](#pages-1)
   + [Posts](#posts-1)
-+ [Snippets](#snippets)
++ [Data Files](#data-files)
+  + [Snippets](#snippets)
 + [Includes](#includes)
   + [header.html](#headerhtml)
     + [navigation.html](#navigationhtml)
@@ -22,6 +23,7 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
       + [if page.layout == 'page'](#if-pagelayout--page)
       + [elsif page.layout == 'post'](#elsif-pagelayout--post)
       + [else](#else)
+      + [Fallback Page](#fallback-page)
     + [title.html](#titlehtml)
   + [localizations.html](#localizationshtml)
 + [Sundries](#sundries)
@@ -288,7 +290,9 @@ Both posts have the variable `language_reference` set to `world` so that they ca
 
 Again, we can use `language` to retrieve only the posts that have the same language, and `language_reference` to retrieve only the posts that return the same content translated in different languages.
 
-## Snippets
+## Data Files
+
+### Snippets
 
 We create a YAML [Data File](https://jekyllrb.com/docs/datafiles/ "Data Files") named `snippets.yml` to store the different translations of the user interface copy as additional data in the `_data` subdirectory.
 
@@ -589,6 +593,22 @@ The second block of code behaves akin to the first, with the only difference tha
 ```
 
 The third block of code runs in the remote eventuality in which both the first and second blocks of code are not run, so that we make sure, again, to serve a fallback page to our web surfers.
+
+##### Fallback Page
+
+How can we be sure that the fallback page truly works?
+
+In this basic site, not all the pages and posts are translated into all the supported languages:
+
+| English | Italian |
+| preface.html | prefazione.html |
+| stories.html | storie.html |
+| postface.html| — |
+
+| English | Italian |
+| hello-world.markdown | ciao-mondo.markdown |
+| hello-mars.markdown | ciao-marte.markdown |
+| — | ciao-giove.markdown |
 
 #### title.html
 
