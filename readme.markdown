@@ -600,7 +600,8 @@ How can we be sure that the fallback page truly works?
 
 In this basic site, not all the pages and posts are translated into all the supported languages—on purpose.
 
-| Pages |
+###### Pages
+
 | English | Italian |
 | - | - |
 | preface.html | prefazione.html |
@@ -609,7 +610,8 @@ In this basic site, not all the pages and posts are translated into all the supp
 
 If you go to [the English page *Postface*](https://ranbureand.github.io/multilingual-experiment/en/postface.html) and press on *Italian* in the language switch, you can see that you are indeed redirected to the Italian page *Storie*.
 
-| Posts |
+###### Posts
+
 | English | Italian |
 | - | - |
 | hello-world.markdown | ciao-mondo.markdown |
