@@ -598,19 +598,25 @@ The third block of code runs in the remote eventuality in which both the first a
 
 How can we be sure that the fallback page truly works?
 
-In this basic site, not all the pages and posts are translated into all the supported languages:
+In this basic site, not all the pages and posts are translated into all the supported languages—on purpose.
 
+| Pages |
 | English | Italian |
 | - | - |
 | preface.html | prefazione.html |
 | stories.html | storie.html |
 | postface.html| — |
 
+If you go to [the English page *Postface*](https://ranbureand.github.io/multilingual-experiment/en/postface.html) and press on *Italian* in the language switch, you can see that you are indeed redirected to the Italian page *Storie*.
+
+| Posts |
 | English | Italian |
 | - | - |
 | hello-world.markdown | ciao-mondo.markdown |
 | hello-mars.markdown | ciao-marte.markdown |
 | — | ciao-giove.markdown |
+
+Similarly, if you go to [the Italian post *Ciao Giove*](https://ranbureand.github.io/multilingual-experiment/it/storia/ciao-giove) and press on *English* in the language switch, you can see that you are indeed redirected to the English page *Stories*.
 
 #### title.html
 
