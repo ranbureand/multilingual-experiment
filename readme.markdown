@@ -601,11 +601,13 @@ How can we be sure that the fallback page truly works?
 In this basic site, not all the pages and posts are translated into all the supported languages:
 
 | English | Italian |
+| - | - |
 | preface.html | prefazione.html |
 | stories.html | storie.html |
 | postface.html| — |
 
 | English | Italian |
+| - | - |
 | hello-world.markdown | ciao-mondo.markdown |
 | hello-mars.markdown | ciao-marte.markdown |
 | — | ciao-giove.markdown |
