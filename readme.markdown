@@ -5,7 +5,7 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
 ## Table of Contents
 
 + [Preface](#preface)
-+ [Introduction](#introduction)
++ [Foreword](#foreword)
 + [Directory Structure](#directory-structure)
   + [Pages](#pages)
     + [Exceptions](#exceptions)
@@ -28,8 +28,12 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
   + [localizations.html](#localizationshtml)
 + [Sundries](#sundries)
   + [Multilingual Sitemap](#multilingualsitemap)
+    + [Sitemap Index](#sitemap-index)
+    + [Sitemaps](#sitemaps)
   + [RSS Feed](#rss-feed)
+  + [404 Page Not Found](#404-page-not-found)
 + [Resources](#resources)
++ [Afterword](#afterword)
 
 ## Preface
 
@@ -41,15 +45,21 @@ Not giving up, I then opted for creating a basic site from scratch, so that I co
 
 That very same basic site is hosted in this repository, which I gladly share with the world as an example project, hoping to help anybody who is into coding a multilingual site using Jekyll.
 
-## Introduction
+## Foreword
 
-A few directions before starting:
+A few wordss before starting. The basic site built with the approach illustrated in this README:
 
-+ the small basic site supports only two languages, English and Italian
-+
-+
++ can support [as many languages as needed](#directory-structure)
++ can serve pages or posts that do not necessarily need to be translated in all the supported languages
++ has a [language switch](#language-switchhtml) that can either direct web surfers to view the current page or post in the selected language, if available, or can direct them to an alternative [fallback page](#fallback-page)
++ does not need you to install custom plugins
++ leverages the basics of Jekyll and thus should be relatively future-proof (last famous words)
++ can be published as a [*GitHub Pages* site](https://ranbureand.github.io/multilingual-experiment/)
 
-*Coming soon…*
+Moreover, beware that the site hosted in this repository:
+
++ is visually quite crude, since the focus is on illustrating a structural (not visual) approach to building multilingual sites
++ supports English and Italian as example languages
 
 ## Directory Structure
 
@@ -685,7 +695,58 @@ Again, we have three different code blocks that are run only if specific conditi
 
 ### Multilingual Sitemap
 
-*Coming soon…*
+#### Sitemap Index
+
+But, of course, there are exceptions. We place the pages `404.html`, `index.html`, and `sitemap.html` in the root directory of the site. Why?
+
+`sitemap.xml` instead is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders (read the section [Multilingual Sitemap](#multilingual-sitemap) for more details).
+
+``` liquid
+---
+layout: none
+
+sitemap:
+  exclude: true
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  {%- assign pages = site.pages | where: 'title', 'Sitemap' %}
+
+  {%- for page in pages %}
+    <url>
+      <loc>{{ site.absoluteurl }}{{ page.url | remove: 'index.html' }}</loc>
+
+      {%- if page.sitemap.lastmod %}
+        {%- assign lastmod = page.sitemap.lastmod | date: '%Y-%m-%d' %}
+      {%- elsif page.date %}
+        {%- assign lastmod = page.date | date_to_xmlschema %}
+      {%- else %}
+        {%- assign lastmod = site.time | date_to_xmlschema %}
+      {%- endif %}
+      <lastmod>{{ lastmod }}</lastmod>
+
+      {%- if page.sitemap.changefreq %}
+        {%- assign changefreq = page.sitemap.changefreq %}
+      {%- else %}
+        {%- assign changefreq = 'monthly' %}
+      {%- endif %}
+      <changefreq>{{ changefreq }}</changefreq>
+
+      {%- if page.sitemap.priority %}
+        {%- assign priority = page.sitemap.priority %}
+      {%- else %}
+        {%- assign priority = 0.3 %}
+      {%- endif %}
+      <priority>{{ priority }}</priority>
+    </url>
+  {%- endfor %}
+
+</urlset>
+```
+
+#### Sitemaps
 
 ### RSS Feed
 
@@ -699,3 +760,10 @@ Again, we have three different code blocks that are run only if specific conditi
 
 + [Making Jekyll multilingual](https://sylvaindurand.org/making-jekyll-multilingual/ "Making Jekyll multilingual")
 + [Making a multilingual website with Jekyll collections](https://www.kooslooijesteijn.net/blog/multilingual-website-with-jekyll-collections "Making a multilingual website with Jekyll collections")
+
+## Afterword
+
+If you feel like sharing something or you have spotted something worth fixing, please feel free to [create an issue on GitHub](https://github.com/ranbureand/multilingual-experiment/issues): thoughts, critiques, suggestions are more than welcomed.
+
+Thank you!
+

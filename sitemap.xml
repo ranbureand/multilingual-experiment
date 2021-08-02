@@ -1,0 +1,42 @@
+---
+layout: none
+
+sitemap:
+  exclude: true
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  {%- assign pages = site.pages | where: 'title', 'Sitemap' %}
+
+  {%- for page in pages %}
+    <url>
+      <loc>{{ site.absoluteurl }}{{ page.url | remove: 'index.html' }}</loc>
+
+      {%- if page.sitemap.lastmod %}
+        {%- assign lastmod = page.sitemap.lastmod | date: '%Y-%m-%d' %}
+      {%- elsif page.date %}
+        {%- assign lastmod = page.date | date_to_xmlschema %}
+      {%- else %}
+        {%- assign lastmod = site.time | date_to_xmlschema %}
+      {%- endif %}
+      <lastmod>{{ lastmod }}</lastmod>
+
+      {%- if page.sitemap.changefreq %}
+        {%- assign changefreq = page.sitemap.changefreq %}
+      {%- else %}
+        {%- assign changefreq = 'monthly' %}
+      {%- endif %}
+      <changefreq>{{ changefreq }}</changefreq>
+
+      {%- if page.sitemap.priority %}
+        {%- assign priority = page.sitemap.priority %}
+      {%- else %}
+        {%- assign priority = 0.3 %}
+      {%- endif %}
+      <priority>{{ priority }}</priority>
+    </url>
+  {%- endfor %}
+
+</urlset>

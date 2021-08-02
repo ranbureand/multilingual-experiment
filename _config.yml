@@ -3,6 +3,7 @@ title: 'Multilingual Experiment'
 description: 'A basic site to experiment with Jekyll and multilingual sites.'
 
 baseurl: '/' # the subpath of your site, e.g. /blog
+absoluteurl: 'https://ranbureand.github.io/multilingual-experiment'
 url: '' # the base hostname & protocol for your site, e.g. http://example.com
 
 version: '2021-01-01'
