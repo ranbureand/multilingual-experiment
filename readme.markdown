@@ -763,7 +763,7 @@ sitemap:
 
 ## Afterword
 
-If you feel like sharing something or you have spotted something worth fixing, please feel free to [create an issue on GitHub](https://github.com/ranbureand/multilingual-experiment/issues): thoughts, critiques, suggestions are more than welcomed.
+If you feel like sharing something or you have spotted something worth fixing, please feel free to either [drop me a line](andreaburan.com/ "Andrea Buran’s Sitefolio") or [create an issue on GitHub](https://github.com/ranbureand/multilingual-experiment/issues): thoughts, critiques, suggestions are more than welcomed.
 
 Thank you!
 
