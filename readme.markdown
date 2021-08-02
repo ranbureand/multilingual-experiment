@@ -47,7 +47,7 @@ That very same basic site is hosted in this repository, which I gladly share wit
 
 ## Foreword
 
-A few wordss before starting. The basic site built with the approach illustrated in this README:
+A few words before starting. The basic site built with the approach illustrated in this README:
 
 + can support [as many languages as needed](#directory-structure)
 + can serve pages or posts that do not necessarily need to be translated in all the supported languages
