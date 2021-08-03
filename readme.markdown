@@ -27,7 +27,7 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
     + [title.html](#titlehtml)
   + [localizations.html](#localizationshtml)
 + [Sundries](#sundries)
-  + [Multilingual Sitemap](#multilingualsitemap)
+  + [Multilingual Sitemaps](#multilingual-sitemaps)
     + [Sitemap Index](#sitemap-index)
     + [Sitemaps](#sitemaps)
   + [RSS Feed](#rss-feed)
