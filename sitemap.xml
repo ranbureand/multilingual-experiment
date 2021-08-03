@@ -6,12 +6,12 @@ sitemap:
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  {%- assign pages = site.pages | where: 'title', 'Sitemap' %}
+  {%- assign pages = site.pages | where: 'language_reference', 'sitemap' %}
 
   {%- for page in pages %}
-    <url>
+    <sitemap>
       <loc>{{ site.absoluteurl }}{{ page.url | remove: 'index.html' }}</loc>
 
       {%- if page.sitemap.lastmod %}
@@ -22,21 +22,7 @@ sitemap:
         {%- assign lastmod = site.time | date_to_xmlschema %}
       {%- endif %}
       <lastmod>{{ lastmod }}</lastmod>
-
-      {%- if page.sitemap.changefreq %}
-        {%- assign changefreq = page.sitemap.changefreq %}
-      {%- else %}
-        {%- assign changefreq = 'monthly' %}
-      {%- endif %}
-      <changefreq>{{ changefreq }}</changefreq>
-
-      {%- if page.sitemap.priority %}
-        {%- assign priority = page.sitemap.priority %}
-      {%- else %}
-        {%- assign priority = 0.3 %}
-      {%- endif %}
-      <priority>{{ priority }}</priority>
-    </url>
+    </sitemap>
   {%- endfor %}
 
-</urlset>
+</sitemapindex>

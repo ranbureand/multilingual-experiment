@@ -3,10 +3,10 @@ layout: post
 
 title: Ciao Mondo
 description: Ciao Mondo.
-date: '2021-01-01 00:00:00'
+date: 2021-01-01 00:00:00
 
-language: 'it'
-language_reference: 'world'
+language: it
+language_reference: world
 
 published: true
 ---

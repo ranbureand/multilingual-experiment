@@ -3,6 +3,9 @@ layout: none
 
 title: Sitemap
 
+language: it
+language_reference: sitemap
+
 sitemap:
   excluded: true
 ---

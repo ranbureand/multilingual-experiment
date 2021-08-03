@@ -3,6 +3,9 @@ layout: none
 
 title: Sitemap
 
+language: en
+language_reference: sitemap
+
 sitemap:
   excluded: true
 ---
@@ -10,7 +13,7 @@ sitemap:
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  {%- assign posts = site.posts | sort: 'date' | where: 'language', 'en' | where: 'published', true %}
+  {%- assign posts = site.posts | sort: 'date' | where: 'language', page.language | where: 'published', true %}
 
   {%- for post in posts reversed %}
     <url>

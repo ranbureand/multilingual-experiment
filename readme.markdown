@@ -43,7 +43,7 @@ At first, I tried to replicate their approaches directly in the site I was worki
 
 Not giving up, I then opted for creating a basic site from scratch, so that I could just focus on experimenting with multiple languages in Jekyll without any extra complexity in the picture.
 
-That very same basic site is hosted in this repository, which I gladly share with the world as an example project, hoping to help anybody who is into coding a multilingual site using Jekyll.
+That very same basic site is hosted in this repository, which I gladly share with the world as an example project, hoping to be of a help for anybody who is into coding a multilingual site using Jekyll.
 
 ## Foreword
 
@@ -251,10 +251,10 @@ layout: post
 
 title: Hello World
 description: Hello world.
-date: '2021-01-01 00:00:00'
+date: 2021-01-01 00:00:00
 
-language: 'en'
-language_reference: 'world'
+language: en
+language_reference: world
 
 published: true
 ---
@@ -270,10 +270,10 @@ layout: post
 
 title: Hello World
 description: Hello world.
-date: '2021-01-01 00:00:00'
+date: 2021-01-01 00:00:00
 
-language: 'en'
-language_reference: 'world'
+language: en
+language_reference: world
 
 published: true
 ---
@@ -287,10 +287,10 @@ layout: post
 
 title: Ciao Mondo
 description: Ciao Mondo.
-date: '2021-01-01 00:00:00'
+date: 2021-01-01 00:00:00
 
-language: 'it'
-language_reference: 'world'
+language: it
+language_reference: world
 
 published: true
 ---
@@ -693,11 +693,13 @@ Again, we have three different code blocks that are run only if specific conditi
 
 *Coming soon…*
 
-### Multilingual Sitemap
+### Multilingual Sitemaps
+
+If we want to serve a multilingual sitemap, we need to create a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") file and list a Sitemap file for each language we support.
 
 #### Sitemap Index
 
-The page named `sitemap.html` is placed in the root directory of the site. It is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders.
+We plage the page named `sitemap.html` in the root directory of the site. It points to the other localized sitemaps in the respective language subfolders.
 
 ``` liquid
 ---
@@ -708,12 +710,12 @@ sitemap:
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  {%- assign pages = site.pages | where: 'title', 'Sitemap' %}
+  {%- assign pages = site.pages | where: 'language_reference', 'sitemap' %}
 
   {%- for page in pages %}
-    <url>
+    <sitemap>
       <loc>{{ site.absoluteurl }}{{ page.url | remove: 'index.html' }}</loc>
 
       {%- if page.sitemap.lastmod %}
@@ -724,25 +726,13 @@ sitemap:
         {%- assign lastmod = site.time | date_to_xmlschema %}
       {%- endif %}
       <lastmod>{{ lastmod }}</lastmod>
-
-      {%- if page.sitemap.changefreq %}
-        {%- assign changefreq = page.sitemap.changefreq %}
-      {%- else %}
-        {%- assign changefreq = 'monthly' %}
-      {%- endif %}
-      <changefreq>{{ changefreq }}</changefreq>
-
-      {%- if page.sitemap.priority %}
-        {%- assign priority = page.sitemap.priority %}
-      {%- else %}
-        {%- assign priority = 0.3 %}
-      {%- endif %}
-      <priority>{{ priority }}</priority>
-    </url>
+    </sitemap>
   {%- endfor %}
 
-</urlset>
+</sitemapindex>
 ```
+
+#### Sitemaps
 
 ``` yaml
 ---
@@ -754,8 +744,6 @@ sitemap:
   priority: ''
 ---
 ```
-
-#### Sitemaps
 
 ### RSS Feed
 
