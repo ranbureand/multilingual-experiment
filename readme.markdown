@@ -706,7 +706,7 @@ We plage the page named `sitemap.html` in the root directory of the site. It poi
 layout: none
 
 sitemap:
-  exclude: true
+  excluded: true
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
