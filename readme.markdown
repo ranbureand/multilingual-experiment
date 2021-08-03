@@ -695,7 +695,7 @@ Again, we have three different code blocks that are run only if specific conditi
 
 ### Multilingual Sitemaps
 
-If we want to serve a multilingual sitemap, we need to create a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") file and list a Sitemap file for each language we support.
+To serve a multilingual sitemap, we need to create a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") file and list a Sitemap file for each language we support.
 
 #### Sitemap Index
 
@@ -732,7 +732,99 @@ sitemap:
 </sitemapindex>
 ```
 
+By setting the following variables in the front matter of the Sitemap index file:
+
+``` yaml
+sitemap:
+  excluded: true
+```
+
+we make sure to exclude it from the list of pages generated in the English Sitemap file.
+
 #### Sitemaps
+
+``` liquid
+---
+layout: none
+
+title: Sitemap
+
+language: en
+language_reference: sitemap
+
+sitemap:
+  excluded: true
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  {%- assign posts = site.posts | sort: 'date' | where: 'language', page.language | where: 'published', true %}
+
+  {%- for post in posts reversed %}
+    <url>
+      <loc>{{ site.absoluteurl }}{{ post.url }}</loc>
+
+      {%- if post.sitemap.lastmod %}
+        {%- assign lastmod = post.sitemap.lastmod | date: '%Y-%m-%d' %}
+      {%- elsif post.date %}
+        {%- assign lastmod = post.date | date_to_xmlschema %}
+      {%- else %}
+        {%- assign lastmod = site.time | date_to_xmlschema %}
+      {%- endif %}
+      <lastmod>{{ lastmod }}</lastmod>
+
+      {%- if post.sitemap.changefreq %}
+        {%- assign changefreq = post.sitemap.changefreq %}
+      {%- else %}
+        {%- assign changefreq = 'monthly' %}
+      {%- endif %}
+      <changefreq>{{ changefreq }}</changefreq>
+
+      {%- if post.sitemap.priority %}
+        {%- assign priority = post.sitemap.priority %}
+      {%- else %}
+        {%- assign priority = 0.5 %}
+      {%- endif %}
+      <priority>{{ priority }}</priority>
+    </url>
+  {%- endfor %}
+
+  {%- assign pages = site.pages | where: 'language', 'en' %}
+
+  {%- for page in pages %}
+    {%- unless page.sitemap.excluded == true %}
+    <url>
+      <loc>{{ site.absoluteurl }}{{ page.url | remove: 'index.html' }}</loc>
+
+      {%- if post.sitemap.lastmod %}
+        {%- assign lastmod = page.sitemap.lastmod | date: '%Y-%m-%d' %}
+      {%- elsif post.date %}
+        {%- assign lastmod = page.date | date_to_xmlschema %}
+      {%- else %}
+        {%- assign lastmod = site.time | date_to_xmlschema %}
+      {%- endif %}
+      <lastmod>{{ lastmod }}</lastmod>
+
+      {%- if page.sitemap.changefreq %}
+        {%- assign changefreq = page.sitemap.changefreq %}
+      {%- else %}
+        {%- assign changefreq = 'monthly' %}
+      {%- endif %}
+      <changefreq>{{ changefreq }}</changefreq>
+
+      {%- if page.sitemap.priority %}
+        {%- assign priority = page.sitemap.priority %}
+      {%- else %}
+        {%- assign priority = 0.3 %}
+      {%- endif %}
+      <priority>{{ priority }}</priority>
+    </url>
+    {%- endunless %}
+  {%- endfor %}
+
+</urlset>
+```
 
 ``` yaml
 ---
