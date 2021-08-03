@@ -1,6 +1,8 @@
 ---
 layout: none
 
+title: Sitemap Index
+
 sitemap:
   excluded: true
 ---

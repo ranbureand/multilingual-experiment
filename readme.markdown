@@ -26,12 +26,11 @@ The [basic *GitHub Pages* site](https://ranbureand.github.io/multilingual-experi
       + [Fallback Page](#fallback-page)
     + [title.html](#titlehtml)
   + [localizations.html](#localizationshtml)
-+ [Sundries](#sundries)
-  + [Multilingual Sitemaps](#multilingual-sitemaps)
-    + [Sitemap Index](#sitemap-index)
-    + [Sitemaps](#sitemaps)
-  + [RSS Feed](#rss-feed)
-  + [404 Page Not Found](#404-page-not-found)
++ [Multilingual Sitemaps](#multilingual-sitemaps)
+  + [Sitemap Index File](#sitemap-index-file)
+  + [Sitemap Files](#sitemap-files)
++ [RSS Feed](#rss-feed)
++ [404 Page Not Found](#404-page-not-found)
 + [Resources](#resources)
 + [Afterword](#afterword)
 
@@ -689,15 +688,11 @@ The include `localizations.html` adds `<link rel="alternate" … />` tags in the
 
 Again, we have three different code blocks that are run only if specific conditions are met (read the section [language-switch.html](#language-switchhtml) for more details).
 
-## Sundries
-
-*Coming soon…*
-
-### Multilingual Sitemaps
+## Multilingual Sitemaps
 
 To serve a multilingual sitemap, we need to create a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") file and list a Sitemap file for each language we support.
 
-#### Sitemap Index
+### Sitemap Index File
 
 We plage the page named `sitemap.html` in the root directory of the site. It points to the other localized sitemaps in the respective language subfolders.
 
@@ -739,15 +734,15 @@ sitemap:
   excluded: true
 ```
 
-we make sure to exclude it from the list of pages returned in the English Sitemap file.
+we make sure to exclude it from the list of pages returned in the other Sitemap files.
 
-#### Sitemaps
+### Sitemap Files
 
 ``` liquid
 ---
 layout: none
 
-title: Sitemap
+title: English Sitemap
 
 language: en
 language_reference: sitemap
@@ -762,6 +757,7 @@ sitemap:
   {%- assign posts = site.posts | sort: 'date' | where: 'language', page.language | where: 'published', true %}
 
   {%- for post in posts reversed %}
+    {%- unless post.sitemap.excluded == true %}
     <url>
       <loc>{{ site.absoluteurl }}{{ post.url }}</loc>
 
@@ -788,6 +784,7 @@ sitemap:
       {%- endif %}
       <priority>{{ priority }}</priority>
     </url>
+    {%- endunless %}
   {%- endfor %}
 
   {%- assign pages = site.pages | where: 'language', page.language %}
