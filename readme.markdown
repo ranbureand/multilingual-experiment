@@ -47,16 +47,16 @@ That very same basic site is hosted in this repository, which I gladly share wit
 
 ## Foreword
 
-A few words before starting. The basic site built with the approach illustrated in this README:
+A few words before starting. Sites built with the approach illustrated in this README:
 
 + can support [as many languages as needed](#directory-structure)
 + can serve pages or posts that do not necessarily need to be translated in all the supported languages
-+ has a [language switch](#language-switchhtml) that can either direct web surfers to view the current page or post in the selected language, if available, or can direct them to an alternative [fallback page](#fallback-page)
-+ does not need you to install custom plugins
-+ leverages the basics of Jekyll and thus should be relatively future-proof (last famous words)
-+ can be published as a [*GitHub Pages* site](https://ranbureand.github.io/multilingual-experiment/)
++ have a [language switch](#language-switchhtml) that can either direct web surfers to view the current page or post in the selected language, if available, or can direct them to an alternative [fallback page](#fallback-page)
++ do not need you to install custom plugins
++ leverage the basics of Jekyll and thus should be relatively future-proof (last famous words)
++ can be published as *GitHub Pages* sites
 
-Moreover, beware that the site hosted in this repository:
+Specifically, [the basic site](https://ranbureand.github.io/multilingual-experiment/) hosted in this repository and used as an example:
 
 + is visually quite crude, since the focus is on illustrating a structural (not visual) approach to building multilingual sites
 + supports English and Italian as example languages
@@ -697,9 +697,7 @@ Again, we have three different code blocks that are run only if specific conditi
 
 #### Sitemap Index
 
-But, of course, there are exceptions. We place the pages `404.html`, `index.html`, and `sitemap.html` in the root directory of the site. Why?
-
-`sitemap.xml` instead is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders (read the section [Multilingual Sitemap](#multilingual-sitemap) for more details).
+The page named `sitemap.html` is placed in the root directory of the site. It is none other than a [Sitemap index](https://www.sitemaps.org/protocol.html#index "Sitemaps XML Format, Sitemap index") which points to the other localized sitemaps in the respective language subfolders.
 
 ``` liquid
 ---
@@ -746,6 +744,17 @@ sitemap:
 </urlset>
 ```
 
+``` yaml
+---
+…
+
+sitemap:
+  lastmod: true
+  changefreq: 'monthly'
+  priority: ''
+---
+```
+
 #### Sitemaps
 
 ### RSS Feed
@@ -763,7 +772,7 @@ sitemap:
 
 ## Afterword
 
-If you feel like sharing something or you have spotted something worth fixing, please feel free to either [drop me a line](andreaburan.com/ "Andrea Buran’s Sitefolio") or [create an issue on GitHub](https://github.com/ranbureand/multilingual-experiment/issues): thoughts, critiques, suggestions are more than welcomed.
+If you feel like adding something to the subject and/or you have spotted something worth fixing, please feel free to either [drop me a line](andreaburan.com/ "Andrea Buran’s Sitefolio") or [create an issue on GitHub](https://github.com/ranbureand/multilingual-experiment/issues): thoughts, critiques, suggestions are all more than welcomed.
 
 Thank you!
 
