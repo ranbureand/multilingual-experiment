@@ -16,6 +16,7 @@ sitemap:
   {%- assign posts = site.posts | sort: 'date' | where: 'language', page.language | where: 'published', true %}
 
   {%- for post in posts reversed %}
+    {%- unless post.sitemap.excluded == true %}
     <url>
       <loc>{{ site.absoluteurl }}{{ post.url }}</loc>
 
@@ -42,9 +43,10 @@ sitemap:
       {%- endif %}
       <priority>{{ priority }}</priority>
     </url>
+    {%- endunless %}
   {%- endfor %}
 
-  {%- assign pages = site.pages | where: 'language', 'en' %}
+  {%- assign pages = site.pages | where: 'language', page.language %}
 
   {%- for page in pages %}
     {%- unless page.sitemap.excluded == true %}

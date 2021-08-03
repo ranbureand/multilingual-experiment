@@ -739,7 +739,7 @@ sitemap:
   excluded: true
 ```
 
-we make sure to exclude it from the list of pages generated in the English Sitemap file.
+we make sure to exclude it from the list of pages returned in the English Sitemap file.
 
 #### Sitemaps
 
@@ -790,7 +790,7 @@ sitemap:
     </url>
   {%- endfor %}
 
-  {%- assign pages = site.pages | where: 'language', 'en' %}
+  {%- assign pages = site.pages | where: 'language', page.language %}
 
   {%- for page in pages %}
     {%- unless page.sitemap.excluded == true %}
