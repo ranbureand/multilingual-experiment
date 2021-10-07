@@ -53,9 +53,9 @@ sitemap:
     <url>
       <loc>{{ site.absoluteurl }}{{ page.url | remove: 'index.html' }}</loc>
 
-      {%- if post.sitemap.lastmod %}
+      {%- if page.sitemap.lastmod %}
         {%- assign lastmod = page.sitemap.lastmod | date: '%Y-%m-%d' %}
-      {%- elsif post.date %}
+      {%- elsif page.date %}
         {%- assign lastmod = page.date | date_to_xmlschema %}
       {%- else %}
         {%- assign lastmod = site.time | date_to_xmlschema %}
