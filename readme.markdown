@@ -694,7 +694,7 @@ To serve a multilingual sitemap, we need to create a [Sitemap index](https://www
 
 ### Sitemap Index File
 
-We plage the page named `sitemap.html` in the root directory of the site. It points to the other localized sitemaps in the respective language subfolders.
+We place the page named `sitemap.html` in the root directory of the site. It points to the other localized sitemaps in the respective language subfolders.
 
 ``` liquid
 ---
